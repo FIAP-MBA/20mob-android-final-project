@@ -1,4 +1,4 @@
-package com.github.cesar1287.filmes20mob.home.presentation
+package com.github.cesar1287.filmes20mob.ui.home.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.FragmentHomeBinding
-import com.github.cesar1287.filmes20mob.home.adapter.HomeAdapter
+import com.github.cesar1287.filmes20mob.ui.home.adapter.HomeAdapter
 import com.github.cesar1287.filmes20mob.utils.Command
 import com.github.cesar1287.filmes20mob.utils.GenresCache
 import org.koin.android.viewmodel.ext.android.viewModel

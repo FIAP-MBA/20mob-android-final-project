@@ -1,4 +1,4 @@
-package com.github.cesar1287.filmes20mob.home.presentation
+package com.github.cesar1287.filmes20mob.ui.home.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,8 +7,8 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PageKeyedDataSource
 import androidx.paging.PagedList
 import com.github.cesar1287.filmes20mob.base.BaseViewModel
-import com.github.cesar1287.filmes20mob.home.data.HomeDataSourceFactory
-import com.github.cesar1287.filmes20mob.home.domain.HomeUseCase
+import com.github.cesar1287.filmes20mob.ui.home.data.HomeDataSourceFactory
+import com.github.cesar1287.filmes20mob.ui.home.domain.HomeUseCase
 import com.github.cesar1287.filmes20mob.model.Genre
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.utils.Constants.Paging.PAGE_SIZE

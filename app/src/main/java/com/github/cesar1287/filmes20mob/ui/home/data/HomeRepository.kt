@@ -1,4 +1,4 @@
-package com.github.cesar1287.filmes20mob.home.data
+package com.github.cesar1287.filmes20mob.ui.home.data
 
 import com.github.cesar1287.filmes20mob.utils.ResponseApi
 

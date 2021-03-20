@@ -1,15 +1,15 @@
-package com.github.cesar1287.filmes20mob.ui.profile
+package com.github.cesar1287.filmes20mob.ui.profile.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.FragmentProfileBinding
-import com.github.cesar1287.filmes20mob.util.Response
-import org.koin.android.ext.android.bind
+import com.github.cesar1287.filmes20mob.utils.Command
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ProfileFragment: BaseFragment() {
@@ -33,6 +33,8 @@ class ProfileFragment: BaseFragment() {
     }
 
     private fun setupView() {
+        viewModel.command = command
+
         binding.createAccountButton.setOnClickListener {
             viewModel.loginUser()
         }
@@ -44,16 +46,21 @@ class ProfileFragment: BaseFragment() {
 
     private fun setupObservables() {
         viewModel.isUserLogged.observe(viewLifecycleOwner) { response ->
-            when(response) {
-                is Response.Success ->  {
-                    hideLoading()
-                    //TODO
+
+        }
+
+        viewModel.command.observe(viewLifecycleOwner) {
+            when(it) {
+                is Command.Loading ->  {
+                    if (it.value) showLoading()
+                    else hideLoading()
                 }
-                is Response.Error -> hideLoading()
-                is Response.Loading -> showLoading()
+                is Command.Error -> {}
             }
         }
 
         viewModel.isUserLogged()
     }
+
+    override var command: MutableLiveData<Command> = MutableLiveData()
 }
