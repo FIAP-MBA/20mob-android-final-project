@@ -2,4 +2,6 @@
     <string name="app_name">Filmes 20MOB</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="media_poster">Imagem do Filme ou Série</string>
+    <string name="info">+ Info</string>
 </resources>
