@@ -8,4 +8,6 @@
     <string name="bio_label">Biografia</string>
     <string name="about_us">Sobre Filmes 20MOB</string>
     <string name="create_account_label">Criar uma conta</string>
+    <string name="media_poster">Imagem do Filme ou Série</string>
+    <string name="info">+ Info</string>
 </resources>
