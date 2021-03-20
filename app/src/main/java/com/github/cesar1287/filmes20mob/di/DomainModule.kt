@@ -6,6 +6,6 @@ import org.koin.dsl.module
 object DomainModule {
 
     val domainModules = module {
-        single { HomeUseCase() }
+        single { HomeUseCase(homeRepository = get()) }
     }
 }

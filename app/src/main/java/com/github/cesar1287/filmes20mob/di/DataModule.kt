@@ -9,8 +9,13 @@ import org.koin.dsl.module
 object DataModule {
 
     val pagingModules = module {
-        single { HomePageKeyedDataSource(get(), get()) }
-        single { HomeDataSourceFactory(get()) }
+        single {
+            HomePageKeyedDataSource(
+                homeRepository = get(),
+                homeUseCase = get()
+            )
+        }
+        single { HomeDataSourceFactory(tmdbDataSource = get()) }
     }
 
     val repositoryModules = module {

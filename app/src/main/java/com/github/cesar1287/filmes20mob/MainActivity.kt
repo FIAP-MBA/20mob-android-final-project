@@ -3,7 +3,6 @@ package com.github.cesar1287.filmes20mob
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
@@ -27,8 +26,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkIfUserIsLoggedIn() {
         Firebase.auth.currentUser?.let {
-            Toast.makeText(this, "Usuário já logado", Toast.LENGTH_SHORT).show()
-
             val newFragment = HomeFragment()
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.container, newFragment).commit()

@@ -1,16 +1,19 @@
 package com.github.cesar1287.filmes20mob.home.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.FragmentHomeBinding
 import com.github.cesar1287.filmes20mob.home.adapter.HomeAdapter
+import com.github.cesar1287.filmes20mob.utils.Command
+import com.github.cesar1287.filmes20mob.utils.GenresCache
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
     private var homeBinding: FragmentHomeBinding? = null
     private val homeViewModel: HomeViewModel by viewModel()
@@ -35,8 +38,27 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadContent()
+        homeViewModel.command = command
+
+        GenresCache.genres.genres?.let {
+            loadContent()
+        } ?: loadGenres()
+
+        setupObservables()
         setupRecyclerView()
+    }
+
+    private fun setupObservables() {
+        homeViewModel.onGenresLoaded.observe(viewLifecycleOwner, {
+            it?.let {
+                GenresCache.genres = it
+            }
+            loadContent()
+        })
+    }
+
+    private fun loadGenres() {
+        homeViewModel.loadGenres()
     }
 
     private fun setupRecyclerView() {
@@ -47,7 +69,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadContent(){
-        homeViewModel.moviesPagedList?.observe(viewLifecycleOwner){ pagedList ->
+        homeViewModel.moviesPagedList?.observe(viewLifecycleOwner) { pagedList ->
             watchMoviesAdapter.submitList(pagedList)
         }
     }
@@ -56,4 +78,6 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         homeBinding = null
     }
+
+    override var command: MutableLiveData<Command> = MutableLiveData()
 }
