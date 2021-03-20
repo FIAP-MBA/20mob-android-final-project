@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.cesar1287.filmes20mob.base.BaseViewModel
+import com.github.cesar1287.filmes20mob.model.Profile
 import com.github.cesar1287.filmes20mob.ui.profile.domain.ProfileUseCase
 import com.github.cesar1287.filmes20mob.utils.Command
 import kotlinx.coroutines.delay
@@ -13,19 +14,28 @@ class ProfileViewModel(
     private val profileUseCase: ProfileUseCase
 ): BaseViewModel() {
     private var _isUserLogged = MutableLiveData<Boolean>()
+    private var _userProfile = MutableLiveData<Profile>()
 
     val isUserLogged: LiveData<Boolean>
         get() = _isUserLogged
+    val userProfile: LiveData<Profile>
+        get() = _userProfile
 
     fun isUserLogged() {
-        viewModelScope.launch {
-            command.postValue(Command.Loading(true))
-            delay(1500)
-            command.postValue(Command.Loading(false))
-        }
+        command.postValue(Command.Loading(true))
+        _isUserLogged.postValue(profileUseCase.isUserLogged())
+        command.postValue(Command.Loading(false))
     }
 
-    fun loginUser() {
+    fun loadUser() {
+        _userProfile.postValue(profileUseCase.getUserProfile()) //teste
+    }
+
+    fun updateUser(
+        name: String,
+        bio: String,
+        image: String
+    ) {
         //TODO
     }
 }
