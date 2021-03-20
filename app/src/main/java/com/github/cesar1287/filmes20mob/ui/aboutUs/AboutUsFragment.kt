@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.FragmentAboutUsBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class AboutUsFragment: Fragment() {
+class AboutUsFragment: BaseFragment() {
     private val viewModel: AboutUsViewModel by viewModel()
     private lateinit var binding: FragmentAboutUsBinding
 
