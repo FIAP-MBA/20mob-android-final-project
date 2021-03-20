@@ -3,6 +3,7 @@ package com.github.cesar1287.filmes20mob.ui.profile.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.esafirm.imagepicker.model.Image
 import com.github.cesar1287.filmes20mob.base.BaseViewModel
 import com.github.cesar1287.filmes20mob.model.Profile
 import com.github.cesar1287.filmes20mob.ui.profile.domain.ProfileUseCase
@@ -28,13 +29,15 @@ class ProfileViewModel(
     }
 
     fun loadUser() {
-        _userProfile.postValue(profileUseCase.getUserProfile()) //teste
+        _userProfile.postValue(profileUseCase.getUserProfile())
     }
 
     fun updateUser(
         name: String,
-        bio: String,
-        image: String
+        email: String,
+        password: String,
+        confirmPassword: String,
+        image: Image?
     ) {
         //TODO
     }

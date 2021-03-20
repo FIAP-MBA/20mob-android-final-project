@@ -25,7 +25,6 @@ class AboutUsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupView()
-        setupObservables()
     }
 
     private fun setupView() {
@@ -41,9 +40,5 @@ class AboutUsFragment: Fragment() {
             return it.packageManager.getPackageInfo(it.packageName, 0).versionName
         }
         return "-"
-    }
-
-    private fun setupObservables() {
-        //TODO
     }
 }

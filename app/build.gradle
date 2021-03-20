@@ -69,6 +69,9 @@ dependencies {
     implementation "org.koin:koin-android-scope:2.2.2"
     implementation "org.koin:koin-android-viewmodel:2.2.2"
 
+    //Image Picker
+    implementation "com.github.esafirm.android-image-picker:imagepicker:2.4.5"
+
     //Jetpack
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0"
