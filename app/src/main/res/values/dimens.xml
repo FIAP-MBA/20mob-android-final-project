@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_quarter">4dp</dimen>
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="margin_half_quarter">12dp</dimen>
+    <dimen name="margin_default">16dp</dimen>
+    <dimen name="margin_default_half">24dp</dimen>
+    <dimen name="margin_double">32dp</dimen>
+    <dimen name="margin_double_half">40dp</dimen>
+    <dimen name="margin_triple">48dp</dimen>
+    <dimen name="margin_quadruple">64dp</dimen>
+
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="small_text_size">14sp</dimen>
+    <dimen name="smaller_text_size">12sp</dimen>
+    <dimen name="tiny_text_size">11sp</dimen>
+
+    <dimen name="title_size">24sp</dimen>
+    <dimen name="subtitle_size">18sp</dimen>
+    <dimen name="small_title_size">20sp</dimen>
+    <dimen name="user_name_size">18sp</dimen>
+
+    <dimen name="user_profile_back_edit_icons_width">24dp</dimen>
+    <dimen name="user_profile_back_edit_icons_height">24dp</dimen>
+    <dimen name="user_profile_back_icon_margin_top">18dp</dimen>
+    <dimen name="user_profile_back_edit_icons_horizontal_margin">22dp</dimen>
+    <dimen name="user_profile_favorite_movie_genders_margin_top">7dp</dimen>
+    <dimen name="user_profile_favorite_genders_to_watched_margin_top">17dp</dimen>
+    <dimen name="user_profile_margin_top_gray_layer">103dp</dimen>
+    <dimen name="user_profile_height_gray_layer">347dp</dimen>
+    <dimen name="user_profile_user_image_width">177dp</dimen>
+    <dimen name="user_profile_user_image_height">177dp</dimen>
+    <dimen name="user_profile_user_image_margin_top">18dp</dimen>
+    <dimen name="user_profile_user_image_border_width">3dp</dimen>
+    <dimen name="user_profile_username_margin_top">5dp</dimen>
+    <dimen name="user_profile_favorite_movies_string_text_size">24sp</dimen>
+    <dimen name="user_profile_favorite_movies_string_margin_top">64dp</dimen>
+    <dimen name="user_profile_favorite_movies_string_margin_bottom">20dp</dimen>
+    <dimen name="user_profile_favorite_movies_list_height">230dp</dimen>
+    <dimen name="user_profile_favorite_shows_string_margin_top">41dp</dimen>
+    <dimen name="user_profile_favorite_shows_string_margin_bottom">20dp</dimen>
+    <dimen name="user_profile_favorite_show_string_text_size">24sp</dimen>
+    <dimen name="user_profile_favorite_shows_list_height">230dp</dimen>
+    <dimen name="user_profile_favorite_shows_list_margin_top">21dp</dimen>
+    <dimen name="user_profile_favorite_shows_list_margin_bottom">51dp</dimen>
+    <dimen name="user_profile_recycler_view_margin_top">20dp</dimen>
+
+    <dimen name="drawable_btn_padding">12dp</dimen>
+    <dimen name="watch_card_elevation">3dp</dimen>
+    <dimen name="watch_card_img_width">100dp</dimen>
+    <dimen name="watch_card_img_height">160dp</dimen>
+
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="button_icon_size">48dp</dimen>
+    <dimen name="button_icon_alternate_size">40dp</dimen>
+    <dimen name="list_person_image_size">40dp</dimen>
+    <dimen name="connect_feed_image_height">194dp</dimen>
+    <dimen name="connect_feed_action_inticator_width">5dp</dimen>
+
+    <dimen name="register_favorite_media_width">40dp</dimen>
+    <dimen name="register_favorite_media_height">55dp</dimen>
+    <dimen name="register_favorite_bottomsheet_height">300dp</dimen>
+
+    <dimen name="text_size_chat">16sp</dimen>
+    <dimen name="min_balloon_chat">24dp</dimen>
+    <dimen name="padding_balloon_chat">4dp</dimen>
+    <dimen name="max_balloon_chat">300dp</dimen>
+
+    <dimen name="chat_messages_count_padding">2dp</dimen>
+    <dimen name="chat_messages_count_min_width">20dp</dimen>
+    <dimen name="chat_message_person_img_size">30dp</dimen>
+
+    <dimen name="remember_card_img_width">100dp</dimen>
+    <dimen name="remember_card_img_height">160dp</dimen>
+
+    <dimen name="movie_tv_details_btn_javi_height">36dp</dimen>
+    <dimen name="movie_tv_details_cast_width">90dp</dimen>
+    <dimen name="movie_tv_details_cast_height">130dp</dimen>
+    <dimen name="movie_tv_details_recommended_width">140dp</dimen>
+    <dimen name="movie_tv_details_recommended_height">220dp</dimen>
+    <dimen name="movie_tv_details_logo_size">60dp</dimen>
+
+</resources>
