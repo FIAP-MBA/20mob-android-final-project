@@ -7,4 +7,8 @@
         android:id="@+id/page_2"
         android:enabled="true"
         android:title="Favoritos"/>
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:title="Profile"/>
 </menu>
