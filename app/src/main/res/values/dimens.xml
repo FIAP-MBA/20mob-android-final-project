@@ -20,31 +20,6 @@
     <dimen name="small_title_size">20sp</dimen>
     <dimen name="user_name_size">18sp</dimen>
 
-    <dimen name="user_profile_back_edit_icons_width">24dp</dimen>
-    <dimen name="user_profile_back_edit_icons_height">24dp</dimen>
-    <dimen name="user_profile_back_icon_margin_top">18dp</dimen>
-    <dimen name="user_profile_back_edit_icons_horizontal_margin">22dp</dimen>
-    <dimen name="user_profile_favorite_movie_genders_margin_top">7dp</dimen>
-    <dimen name="user_profile_favorite_genders_to_watched_margin_top">17dp</dimen>
-    <dimen name="user_profile_margin_top_gray_layer">103dp</dimen>
-    <dimen name="user_profile_height_gray_layer">347dp</dimen>
-    <dimen name="user_profile_user_image_width">177dp</dimen>
-    <dimen name="user_profile_user_image_height">177dp</dimen>
-    <dimen name="user_profile_user_image_margin_top">18dp</dimen>
-    <dimen name="user_profile_user_image_border_width">3dp</dimen>
-    <dimen name="user_profile_username_margin_top">5dp</dimen>
-    <dimen name="user_profile_favorite_movies_string_text_size">24sp</dimen>
-    <dimen name="user_profile_favorite_movies_string_margin_top">64dp</dimen>
-    <dimen name="user_profile_favorite_movies_string_margin_bottom">20dp</dimen>
-    <dimen name="user_profile_favorite_movies_list_height">230dp</dimen>
-    <dimen name="user_profile_favorite_shows_string_margin_top">41dp</dimen>
-    <dimen name="user_profile_favorite_shows_string_margin_bottom">20dp</dimen>
-    <dimen name="user_profile_favorite_show_string_text_size">24sp</dimen>
-    <dimen name="user_profile_favorite_shows_list_height">230dp</dimen>
-    <dimen name="user_profile_favorite_shows_list_margin_top">21dp</dimen>
-    <dimen name="user_profile_favorite_shows_list_margin_bottom">51dp</dimen>
-    <dimen name="user_profile_recycler_view_margin_top">20dp</dimen>
-
     <dimen name="drawable_btn_padding">12dp</dimen>
     <dimen name="watch_card_elevation">3dp</dimen>
     <dimen name="watch_card_img_width">100dp</dimen>
