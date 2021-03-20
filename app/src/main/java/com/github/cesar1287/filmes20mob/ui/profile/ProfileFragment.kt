@@ -5,18 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.github.cesar1287.filmes20mob.R
+import com.github.cesar1287.filmes20mob.databinding.FragmentProfileBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ProfileFragment: Fragment() {
     private val viewModel: ProfileViewModel by viewModel()
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+    ): View {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,7 +31,11 @@ class ProfileFragment: Fragment() {
     }
 
     private fun setupView() {
-        //TODO
+
+
+        binding.profileAboutUsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_aboutUsFragment)
+        }
     }
 
     private fun setupObservables() {

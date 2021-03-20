@@ -5,18 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.github.cesar1287.filmes20mob.R
+import com.github.cesar1287.filmes20mob.databinding.FragmentAboutUsBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class AboutUsFragment: Fragment() {
     private val viewModel: AboutUsViewModel by viewModel()
+    private lateinit var binding: FragmentAboutUsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_about_us, container, false)
+    ): View {
+        binding = FragmentAboutUsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,7 +29,9 @@ class AboutUsFragment: Fragment() {
     }
 
     private fun setupView() {
-        //TODO
+        binding.aboutUsBackButton.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     private fun setupObservables() {

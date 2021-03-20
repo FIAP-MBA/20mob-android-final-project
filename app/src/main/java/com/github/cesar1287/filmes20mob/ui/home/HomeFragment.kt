@@ -1,4 +1,4 @@
-package com.github.cesar1287.filmes20mob.home
+package com.github.cesar1287.filmes20mob.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
