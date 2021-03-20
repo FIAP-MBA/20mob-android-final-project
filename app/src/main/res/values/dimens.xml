@@ -20,39 +20,10 @@
     <dimen name="small_title_size">20sp</dimen>
     <dimen name="user_name_size">18sp</dimen>
 
-    <dimen name="drawable_btn_padding">12dp</dimen>
     <dimen name="watch_card_elevation">3dp</dimen>
     <dimen name="watch_card_img_width">100dp</dimen>
     <dimen name="watch_card_img_height">160dp</dimen>
 
     <dimen name="button_height">40dp</dimen>
     <dimen name="button_icon_size">48dp</dimen>
-    <dimen name="button_icon_alternate_size">40dp</dimen>
-    <dimen name="list_person_image_size">40dp</dimen>
-    <dimen name="connect_feed_image_height">194dp</dimen>
-    <dimen name="connect_feed_action_inticator_width">5dp</dimen>
-
-    <dimen name="register_favorite_media_width">40dp</dimen>
-    <dimen name="register_favorite_media_height">55dp</dimen>
-    <dimen name="register_favorite_bottomsheet_height">300dp</dimen>
-
-    <dimen name="text_size_chat">16sp</dimen>
-    <dimen name="min_balloon_chat">24dp</dimen>
-    <dimen name="padding_balloon_chat">4dp</dimen>
-    <dimen name="max_balloon_chat">300dp</dimen>
-
-    <dimen name="chat_messages_count_padding">2dp</dimen>
-    <dimen name="chat_messages_count_min_width">20dp</dimen>
-    <dimen name="chat_message_person_img_size">30dp</dimen>
-
-    <dimen name="remember_card_img_width">100dp</dimen>
-    <dimen name="remember_card_img_height">160dp</dimen>
-
-    <dimen name="movie_tv_details_btn_javi_height">36dp</dimen>
-    <dimen name="movie_tv_details_cast_width">90dp</dimen>
-    <dimen name="movie_tv_details_cast_height">130dp</dimen>
-    <dimen name="movie_tv_details_recommended_width">140dp</dimen>
-    <dimen name="movie_tv_details_recommended_height">220dp</dimen>
-    <dimen name="movie_tv_details_logo_size">60dp</dimen>
-
 </resources>
