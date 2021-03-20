@@ -29,9 +29,18 @@ class AboutUsFragment: Fragment() {
     }
 
     private fun setupView() {
+        binding.aboutUsVersionText.text = setVersionApp()
+
         binding.aboutUsBackButton.setOnClickListener {
             activity?.onBackPressed()
         }
+    }
+
+    private fun setVersionApp(): String {
+        activity?.let {
+            return it.packageManager.getPackageInfo(it.packageName, 0).versionName
+        }
+        return "-"
     }
 
     private fun setupObservables() {

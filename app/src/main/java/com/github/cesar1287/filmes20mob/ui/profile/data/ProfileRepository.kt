@@ -8,8 +8,6 @@ import com.google.firebase.ktx.Firebase
 class ProfileRepository {
 
     fun isUserLogged(): Boolean {
-        Log.d("TESTE", (Firebase.auth.currentUser?.isAnonymous != true).toString())
-        Log.d("TESTE", (Firebase.auth.currentUser?.isAnonymous).toString())
         return Firebase.auth.currentUser != null && Firebase.auth.currentUser?.isAnonymous != true
     }
 

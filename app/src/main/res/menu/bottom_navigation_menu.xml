@@ -2,6 +2,7 @@
     <item
         android:id="@id/homeFragment"
         android:enabled="true"
+        android:icon="@drawable/ic_movies"
         android:title="Lançamentos"/>
 <!--    <item-->
 <!--        android:id="@+id/page_2"-->
