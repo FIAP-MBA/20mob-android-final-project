@@ -59,6 +59,11 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    // Koin
+    implementation "org.koin:koin-android:2.2.2"
+    implementation "org.koin:koin-android-scope:2.2.2"
+    implementation "org.koin:koin-android-viewmodel:2.2.2"
+
     //Tests
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
