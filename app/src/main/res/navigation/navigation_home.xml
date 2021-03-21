@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.github.cesar1287.filmes20mob.ui.favorite.FavoriteFragment"
+        android:name="com.github.cesar1287.filmes20mob.ui.favorite.presentation.FavoriteFragment"
         android:label="FavoriteFragment"
         tools:layout="@layout/fragment_favorite"/>
 </navigation>

@@ -1,12 +1,10 @@
-package com.github.cesar1287.filmes20mob.ui.favorite
+package com.github.cesar1287.filmes20mob.ui.favorite.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
-import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.FragmentFavoriteBinding
 import com.github.cesar1287.filmes20mob.utils.Command
