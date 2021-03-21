@@ -7,6 +7,7 @@ import com.github.cesar1287.filmes20mob.ui.home.data.HomePageKeyedDataSource
 import com.github.cesar1287.filmes20mob.ui.home.data.HomeRepository
 import com.github.cesar1287.filmes20mob.ui.home.data.HomeRepositoryImpl
 import com.github.cesar1287.filmes20mob.ui.profile.data.ProfileRepository
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 object DataModule {
@@ -22,8 +23,8 @@ object DataModule {
     }
 
     val repositoryModules = module {
-        single<HomeRepository> { HomeRepositoryImpl() }
-        single<FavoriteRepository> { FavoriteRepositoryImpl() }
-        single { ProfileRepository() }
+        single<HomeRepository> { HomeRepositoryImpl(androidContext()) }
+        single<FavoriteRepository> { FavoriteRepositoryImpl(androidContext()) }
+        single { ProfileRepository(androidContext()) }
     }
 }

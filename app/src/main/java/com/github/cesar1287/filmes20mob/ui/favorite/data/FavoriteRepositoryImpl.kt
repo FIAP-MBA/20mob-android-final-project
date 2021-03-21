@@ -1,5 +1,7 @@
 package com.github.cesar1287.filmes20mob.ui.favorite.data
 
+import android.content.Context
+import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.base.BaseRepository
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.utils.Constants
@@ -12,7 +14,9 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 
-class FavoriteRepositoryImpl: FavoriteRepository, BaseRepository() {
+class FavoriteRepositoryImpl(
+    private var context: Context
+): FavoriteRepository, BaseRepository(context) {
 
     override suspend fun getFavoriteMoviesFromUser(): ResponseApi {
         return try {
@@ -26,7 +30,7 @@ class FavoriteRepositoryImpl: FavoriteRepository, BaseRepository() {
 
             ResponseApi.Success(result.toObjects<MovieItem>())
         } catch (exception: Exception) {
-            ResponseApi.Error("Falha ao carregar os favoritos, tente novamente")
+            ResponseApi.Error(context.getString(R.string.error_favorite_default))
         }
     }
 
@@ -39,7 +43,7 @@ class FavoriteRepositoryImpl: FavoriteRepository, BaseRepository() {
 
             ResponseApi.Success(true)
         } catch (exception: Exception) {
-            ResponseApi.Error("Falha ao remover o filme dos favoritos")
+            ResponseApi.Error(context.getString(R.string.error_favorite_remove))
         }
     }
 }

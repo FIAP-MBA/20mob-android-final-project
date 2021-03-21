@@ -1,12 +1,14 @@
 package com.github.cesar1287.filmes20mob.ui.profile.data
 
+import android.content.Context
 import android.net.Uri
+import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.model.Profile
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class ProfileRepository {
+class ProfileRepository(private var context: Context) {
 
     fun isUserLogged(): Boolean {
         return Firebase.auth.currentUser != null && Firebase.auth.currentUser?.isAnonymous != true
@@ -35,7 +37,8 @@ class ProfileRepository {
         }
 
         user?.updateProfile(profileUpdates.build())?.addOnCompleteListener { task ->
-            onComplete(task.isSuccessful,  task.exception?.localizedMessage)
-        } ?: onComplete(false, null)
+            val error = task.exception?.localizedMessage ?: context.getString(R.string.error_default)
+            onComplete(task.isSuccessful, error)
+        } ?: onComplete(false, context.getString(R.string.error_default))
     }
 }
