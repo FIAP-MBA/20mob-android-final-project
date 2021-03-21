@@ -9,6 +9,7 @@ import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.CmpMediaDetailsBottomPosterCardBinding
 import com.github.cesar1287.filmes20mob.databinding.FragmentMovieDetailBinding
 import com.github.cesar1287.filmes20mob.extensions.shareMovie
+import com.github.cesar1287.filmes20mob.extensions.showNearbyTheaters
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.utils.Command
 import com.github.cesar1287.filmes20mob.utils.Constants.Intent.KEY_INTENT_MOVIE
@@ -40,7 +41,8 @@ class MovieDetailFragment : BaseFragment() {
                 }
 
                 activity?.let { activityNonNull ->
-                    GlideApp.with(activityNonNull).load(movie?.backdropPath).into(ivMovieDetailsPosterImage)
+                    GlideApp.with(activityNonNull).load(movie?.backdropPath)
+                        .into(ivMovieDetailsPosterImage)
                 }
 
                 tvMovieDetailsDescriptionText.text = movie?.overview
@@ -48,11 +50,18 @@ class MovieDetailFragment : BaseFragment() {
                 btMovieDetailsShareButton.setOnClickListener {
                     movie?.let { activity?.shareMovie(movie) }
                 }
+
+                btMovieDetailNearbyTheaters.setOnClickListener {
+                    activity?.showNearbyTheaters()
+                }
             }
         }
     }
 
-    private fun setupHeader(movieItem: MovieItem?, cmpMovieDetailsBottomCard: CmpMediaDetailsBottomPosterCardBinding) {
+    private fun setupHeader(
+        movieItem: MovieItem?,
+        cmpMovieDetailsBottomCard: CmpMediaDetailsBottomPosterCardBinding
+    ) {
         with(cmpMovieDetailsBottomCard) {
             tvCmpMediaDetailsTitle.text = movieItem?.title
             tvCmpMediaDetailsGenres.text = movieItem?.genres

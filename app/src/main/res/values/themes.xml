@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Filmes20MOB" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Filmes20MOB" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -91,7 +91,7 @@
 
     <style name="TitleDefault">
         <item name="android:layout_marginTop">@dimen/margin_double</item>
-        <item name="android:layout_marginBottom">@dimen/margin_default_half</item>
+        <item name="android:layout_marginBottom">@dimen/margin_default</item>
         <item name="android:layout_marginStart">@dimen/margin_default</item>
         <item name="android:layout_marginEnd">@dimen/margin_default</item>
         <item name="android:textColor">@color/blue</item>

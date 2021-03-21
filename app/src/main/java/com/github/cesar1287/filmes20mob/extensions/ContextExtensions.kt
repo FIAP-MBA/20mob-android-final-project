@@ -1,7 +1,9 @@
 package com.github.cesar1287.filmes20mob.extensions
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.model.MovieItem
 
@@ -23,4 +25,19 @@ fun Context.shareMovie(movie: MovieItem) {
             this.getString(R.string.share_using)
         )
     )
+}
+
+fun Activity.showNearbyTheaters() {
+    // Create a Uri from an intent string. Use the result to create an Intent.
+    val gmmIntentUri = Uri.parse("geo:0,0?q=cinema")
+
+    // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+    // Make the Intent explicit by setting the Google Maps package
+    mapIntent.setPackage("com.google.android.apps.maps")
+
+    mapIntent.resolveActivity(packageManager)?.let {
+        // Attempt to start an activity that can handle the Intent
+        startActivity(mapIntent)
+    }
 }
