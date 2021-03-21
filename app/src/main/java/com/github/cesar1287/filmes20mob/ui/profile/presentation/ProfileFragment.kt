@@ -147,7 +147,7 @@ class ProfileFragment : BaseFragment() {
             binding?.profileImage?.let { view ->
                 context?.let {
                     GlideApp.with(it)
-                        .load(profile.image?.path)
+                        .load(profile.image.toString())
                         .placeholder(R.drawable.ic_default_person)
                         .into(view)
                 }
