@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.FragmentHomeBinding
 import com.github.cesar1287.filmes20mob.ui.home.adapter.HomeAdapter
 import com.github.cesar1287.filmes20mob.utils.Command
+import com.github.cesar1287.filmes20mob.utils.Constants.Intent.KEY_INTENT_MOVIE
 import com.github.cesar1287.filmes20mob.utils.GenresCache
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -23,9 +25,9 @@ class HomeFragment : BaseFragment() {
     private val watchMoviesAdapter : HomeAdapter by lazy{
         HomeAdapter({
             it?.let {
-//                val intent = Intent(activity, MovieDetailsActivity::class.java)
-//                intent.putExtra(KEY_INTENT_MOVIE_ID, it.id)
-//                startActivity(intent)
+                val args = Bundle()
+                args.putParcelable(KEY_INTENT_MOVIE, it)
+                findNavController().navigate(R.id.action_homeFragment_to_movieDetailFragment, args)
             }
         }, { favoriteMovie ->
             favoriteMovie?.let {

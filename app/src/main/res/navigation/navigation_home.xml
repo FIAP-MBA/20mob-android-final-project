@@ -10,7 +10,13 @@
         android:id="@+id/homeFragment"
         android:name="com.github.cesar1287.filmes20mob.ui.home.presentation.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"/>
+    </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
@@ -35,4 +41,11 @@
         android:name="com.github.cesar1287.filmes20mob.ui.favorite.presentation.FavoriteFragment"
         android:label="FavoriteFragment"
         tools:layout="@layout/fragment_favorite"/>
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.github.cesar1287.filmes20mob.ui.movieDetail.MovieDetailFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_movie_detail"/>
+
 </navigation>
