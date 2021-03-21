@@ -1,10 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_1"
+        android:id="@id/homeFragment"
         android:enabled="true"
+        android:icon="@drawable/ic_movies"
         android:title="Lançamentos"/>
+<!--    <item-->
+<!--        android:id="@+id/page_2"-->
+<!--        android:enabled="true"-->
+<!--        android:title="Favoritos"/>-->
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/profileFragment"
         android:enabled="true"
-        android:title="Favoritos"/>
+        android:icon="@drawable/ic_default_person"
+        android:title="Perfil"/>
 </menu>

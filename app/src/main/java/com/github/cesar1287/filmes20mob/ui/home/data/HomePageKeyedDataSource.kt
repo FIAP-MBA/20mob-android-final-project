@@ -1,7 +1,7 @@
-package com.github.cesar1287.filmes20mob.home.data
+package com.github.cesar1287.filmes20mob.ui.home.data
 
 import androidx.paging.PageKeyedDataSource
-import com.github.cesar1287.filmes20mob.home.domain.HomeUseCase
+import com.github.cesar1287.filmes20mob.ui.home.domain.HomeUseCase
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.model.MoviesResults
 import com.github.cesar1287.filmes20mob.utils.Constants.Paging.FIRST_PAGE

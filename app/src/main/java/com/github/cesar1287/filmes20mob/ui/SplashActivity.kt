@@ -1,4 +1,4 @@
-package com.github.cesar1287.filmes20mob
+package com.github.cesar1287.filmes20mob.ui
 
 import android.animation.Animator
 import android.content.Intent

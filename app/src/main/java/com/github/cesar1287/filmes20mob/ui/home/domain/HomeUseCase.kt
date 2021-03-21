@@ -1,8 +1,8 @@
-package com.github.cesar1287.filmes20mob.home.domain
+package com.github.cesar1287.filmes20mob.ui.home.domain
 
 import com.github.cesar1287.filmes20mob.extensions.getPosterImagePath
 import com.github.cesar1287.filmes20mob.extensions.getYear
-import com.github.cesar1287.filmes20mob.home.data.HomeRepository
+import com.github.cesar1287.filmes20mob.ui.home.data.HomeRepository
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.model.MoviesResults
 import com.github.cesar1287.filmes20mob.utils.GenresCache

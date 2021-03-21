@@ -1,7 +1,17 @@
 <resources>
     <string name="app_name">Filmes 20MOB</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_label">Nome</string>
+    <string name="email_label">Email</string>
+    <string name="password_label">Senha</string>
+    <string name="confirm_password_label">Confirmar senha</string>
+    <string name="about_us">Sobre Filmes 20MOB</string>
+    <string name="create_account_label">Criar uma conta</string>
     <string name="media_poster">Imagem do Filme ou Série</string>
     <string name="info">+ Info</string>
+    <string name="gallery">Galeria</string>
+    <string name="done">Pronto</string>
+    <string name="update_label">Atualizar</string>
+    <string name="version_label">Versão:</string>
+    <string name="developed_by_label">Desenvolvido por:</string>
+    <string name="devs_label">César Rodrigues RM336648\n Rafael Barros RM336738\n Valmir Torres RM336666\n Welton Dornelas RM336708</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.github.cesar1287.filmes20mob.home.adapter
+package com.github.cesar1287.filmes20mob.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
