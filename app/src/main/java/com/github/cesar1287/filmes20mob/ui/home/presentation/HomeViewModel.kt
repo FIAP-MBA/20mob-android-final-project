@@ -24,6 +24,11 @@ class HomeViewModel(
     val onGenresLoaded: LiveData<Genre>
         get() = _onGenresLoaded
 
+    private val _onMovieSaved: MutableLiveData<Boolean> = MutableLiveData()
+
+    val onMovieSaved: LiveData<Boolean>
+        get() = _onMovieSaved
+
     var moviesPagedList: LiveData<PagedList<MovieItem>>? = null
     private var watchMoviesLiveDataSource: LiveData<PageKeyedDataSource<Int, MovieItem>>? = null
 
@@ -47,6 +52,17 @@ class HomeViewModel(
                 },
                 onError = {
                     _onGenresLoaded.postValue(null)
+                }
+            )
+        }
+    }
+
+    fun saveFavoriteMovie(movie: MovieItem) {
+        viewModelScope.launch {
+            callApi(
+                call = suspend { homeUseCase.saveMovie(movie) },
+                onSuccess = {
+                    _onMovieSaved.postValue(true)
                 }
             )
         }

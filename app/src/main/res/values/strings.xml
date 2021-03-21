@@ -14,4 +14,7 @@
     <string name="version_label">Versão:</string>
     <string name="developed_by_label">Desenvolvido por:</string>
     <string name="devs_label">César Rodrigues RM336648\n Rafael Barros RM336738\n Valmir Torres RM336666\n Welton Dornelas RM336708</string>
+    <string name="menu_lauches">Lançamentos</string>
+    <string name="menu_favorite">Favoritos</string>
+    <string name="menu_profile">Perfil</string>
 </resources>

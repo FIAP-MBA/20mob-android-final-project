@@ -18,6 +18,7 @@ class HomeUseCase(
 
         movies?.forEach { movie ->
             movie.posterPath = movie.posterPath?.getPosterImagePath()
+            movie.backdropPath = movie.backdropPath?.getPosterImagePath("large")
             movie.releaseDate = movie.releaseDate?.getYear()
             movieGenres?.let {
                 val genres = movie.genreIds.map { it to movieGenres[it] }.toMap()
@@ -29,5 +30,9 @@ class HomeUseCase(
 
     suspend fun loadGenres(): ResponseApi {
         return homeRepository.getGenres()
+    }
+
+    suspend fun saveMovie(movie: MovieItem): ResponseApi {
+        return homeRepository.saveMovie(movie)
     }
 }

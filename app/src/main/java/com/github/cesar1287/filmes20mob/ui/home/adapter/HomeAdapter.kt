@@ -10,7 +10,8 @@ import com.github.cesar1287.filmes20mob.databinding.WatchCardItemBinding
 import com.github.cesar1287.filmes20mob.model.MovieItem
 
 class HomeAdapter(
-    private val onItemClicked: (MovieItem?) -> Unit
+    private val onItemClicked: (MovieItem?) -> Unit,
+    private val onFavoriteClick: (MovieItem?) -> Unit
 ) : PagedListAdapter<MovieItem, HomeAdapter.ViewHolder>(MovieItem.DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,7 +21,7 @@ class HomeAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position), onItemClicked)
+        holder.bind(getItem(position), onItemClicked, onFavoriteClick)
     }
 
     class ViewHolder(
@@ -28,7 +29,8 @@ class HomeAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
             movie: MovieItem?,
-            onItemClicked: (MovieItem?) -> Unit
+            onItemClicked: (MovieItem?) -> Unit,
+            onFavoriteClick: (MovieItem?) -> Unit
         ) = with(binding) {
             movie?.let {
                 Glide.with(itemView.context)
@@ -51,6 +53,9 @@ class HomeAdapter(
 //                    intent.type = "text/plain"
 //                    itemView.context.startActivity(intent)
 //                }
+                btFavoriteMovie.setOnClickListener {
+                    onFavoriteClick(movie)
+                }
             }
         }
     }

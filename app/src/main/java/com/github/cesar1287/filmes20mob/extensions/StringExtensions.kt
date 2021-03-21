@@ -6,7 +6,7 @@ fun String.getPosterImagePath(size: String = "small"): String {
     return when (size) {
         "small" -> "${Constants.Api.BASE_URL_W154_IMAGE}$this"
         "medium" -> "${Constants.Api.BASE_URL_W185_IMAGE}$this"
-        "large" -> "${Constants.Api.BASE_URL_W342_IMAGE}$this"
+        "large" -> "${Constants.Api.BASE_URL_W500_IMAGE}$this"
         else -> "${Constants.Api.BASE_URL_W154_IMAGE}$this"
     }
 }

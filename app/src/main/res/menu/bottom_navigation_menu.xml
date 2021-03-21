@@ -3,14 +3,15 @@
         android:id="@id/homeFragment"
         android:enabled="true"
         android:icon="@drawable/ic_movies"
-        android:title="Lançamentos"/>
-<!--    <item-->
-<!--        android:id="@+id/page_2"-->
-<!--        android:enabled="true"-->
-<!--        android:title="Favoritos"/>-->
+        android:title="@string/menu_lauches"/>
+    <item
+        android:id="@+id/favoriteFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_favorite_24px"
+        android:title="@string/menu_favorite"/>
     <item
         android:id="@+id/profileFragment"
         android:enabled="true"
         android:icon="@drawable/ic_default_person"
-        android:title="Perfil"/>
+        android:title="@string/menu_profile"/>
 </menu>

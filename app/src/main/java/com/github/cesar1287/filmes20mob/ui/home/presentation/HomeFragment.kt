@@ -19,13 +19,17 @@ class HomeFragment : BaseFragment() {
     private val homeViewModel: HomeViewModel by viewModel()
 
     private val watchMoviesAdapter : HomeAdapter by lazy{
-        HomeAdapter{
+        HomeAdapter({
             it?.let {
 //                val intent = Intent(activity, MovieDetailsActivity::class.java)
 //                intent.putExtra(KEY_INTENT_MOVIE_ID, it.id)
 //                startActivity(intent)
             }
-        }
+        }, { favoriteMovie ->
+            favoriteMovie?.let {
+                homeViewModel.saveFavoriteMovie(it)
+            }
+        })
     }
 
     override fun onCreateView(

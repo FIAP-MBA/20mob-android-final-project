@@ -23,9 +23,16 @@
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
     </fragment>
+
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="com.github.cesar1287.filmes20mob.ui.aboutUs.presentation.AboutUsFragment"
         android:label="AboutUsFragment"
         tools:layout="@layout/fragment_about_us"/>
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.github.cesar1287.filmes20mob.ui.favorite.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_favorite"/>
 </navigation>
