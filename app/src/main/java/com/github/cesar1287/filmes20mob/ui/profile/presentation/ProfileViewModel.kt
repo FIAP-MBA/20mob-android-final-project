@@ -45,7 +45,7 @@ class ProfileViewModel(
     }
 
     private fun handlerFirebaseCalls(isSuccessful: Boolean, message: String?) {
-        command.postValue(Command.Loading(false))
+        command.value = Command.Loading(false)
         _isProfileUpdated.postValue(isSuccessful)
         if (!isSuccessful) {
             command.postValue(Command.Error(error = message))

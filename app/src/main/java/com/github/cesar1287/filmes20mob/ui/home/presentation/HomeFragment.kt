@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cesar1287.filmes20mob.R
@@ -75,7 +74,11 @@ class HomeFragment : BaseFragment() {
                     if (it.value) showLoading()
                     else hideLoading()
                 }
-                is Command.Error -> Toast.makeText(context, it.error, Toast.LENGTH_LONG).show()
+                is Command.Error -> {
+                    homeBinding?.rvHomeMoviesList?.let { view ->
+                        Snackbar.make(view, it.error ?: "", Snackbar.LENGTH_LONG).show()
+                    }
+                }
             }
         }
     }
