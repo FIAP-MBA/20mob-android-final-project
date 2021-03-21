@@ -22,4 +22,6 @@
     <string name="no_favorite_label">Você ainda não tem nenhum favorito :(\n\nAdicione na tela de Lançamentos</string>
     <string name="movie_favorite_successfully">Filme favoritado com sucesso</string>
     <string name="movie_removed_from_favorites_successfully">Filme removido com sucesso dos favoritos</string>
+    <string name="synopsis">Sinopse</string>
+    <string name="nearby_theaters">Cinema próximos</string>
 </resources>

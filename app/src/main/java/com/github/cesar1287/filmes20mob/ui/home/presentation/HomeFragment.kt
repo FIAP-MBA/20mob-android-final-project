@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.FragmentHomeBinding
 import com.github.cesar1287.filmes20mob.ui.home.adapter.HomeAdapter
 import com.github.cesar1287.filmes20mob.utils.Command
+import com.github.cesar1287.filmes20mob.utils.Constants.Intent.KEY_INTENT_MOVIE
 import com.github.cesar1287.filmes20mob.utils.GenresCache
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -20,18 +22,22 @@ class HomeFragment : BaseFragment() {
     private var homeBinding: FragmentHomeBinding? = null
     private val homeViewModel: HomeViewModel by viewModel()
 
-    private val watchMoviesAdapter : HomeAdapter by lazy{
-        HomeAdapter({
-            it?.let {
-//                val intent = Intent(activity, MovieDetailsActivity::class.java)
-//                intent.putExtra(KEY_INTENT_MOVIE_ID, it.id)
-//                startActivity(intent)
-            }
-        }, { favoriteMovie ->
-            favoriteMovie?.let {
-                homeViewModel.saveFavoriteMovie(it)
-            }
-        })
+    private val watchMoviesAdapter: HomeAdapter by lazy {
+        HomeAdapter(
+            { movieClicked ->
+                movieClicked?.let {
+                    val args = Bundle()
+                    args.putParcelable(KEY_INTENT_MOVIE, it)
+                    findNavController().navigate(
+                        R.id.action_homeFragment_to_movieDetailFragment,
+                        args
+                    )
+                }
+            }, { favoriteMovie ->
+                favoriteMovie?.let {
+                    homeViewModel.saveFavoriteMovie(it)
+                }
+            })
     }
 
     override fun onCreateView(
@@ -64,7 +70,11 @@ class HomeFragment : BaseFragment() {
 
         homeViewModel.onMovieSaved.observe(viewLifecycleOwner, {
             homeBinding?.rvHomeMoviesList?.let {
-                Snackbar.make(it, getString(R.string.movie_favorite_successfully), Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    it,
+                    getString(R.string.movie_favorite_successfully),
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         })
     }
@@ -74,13 +84,13 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setupRecyclerView() {
-        homeBinding?.rvHomeMoviesList?.apply{
+        homeBinding?.rvHomeMoviesList?.apply {
             layoutManager = LinearLayoutManager(this.context)
             adapter = watchMoviesAdapter
         }
     }
 
-    private fun loadContent(){
+    private fun loadContent() {
         homeViewModel.moviesPagedList?.observe(viewLifecycleOwner) { pagedList ->
             watchMoviesAdapter.submitList(pagedList)
         }

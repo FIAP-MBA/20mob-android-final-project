@@ -1,11 +1,11 @@
 package com.github.cesar1287.filmes20mob.ui.favorite.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.databinding.WatchCardItemBinding
+import com.github.cesar1287.filmes20mob.extensions.shareMovie
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.utils.GlideApp
 
@@ -51,23 +51,7 @@ class FavoriteAdapter(
                     onItemClicked(movie)
                 }
                 btWatchShare.setOnClickListener {
-                    val intent = Intent()
-                    intent.action = Intent.ACTION_SEND
-                    intent.putExtra(
-                        Intent.EXTRA_TEXT,
-                        itemView.context.getString(
-                            R.string.share_movie_message,
-                            movie.title,
-                            movie.homepage ?: ""
-                        )
-                    )
-                    intent.type = "text/plain"
-                    itemView.context.startActivity(
-                        Intent.createChooser(
-                            intent,
-                            itemView.context.getString(R.string.share_using)
-                        )
-                    )
+                    itemView.context.shareMovie(movie)
                 }
                 btFavoriteMovie.setOnClickListener {
                     onFavoriteClick(movie)
