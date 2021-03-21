@@ -5,9 +5,9 @@ import com.github.cesar1287.filmes20mob.utils.Constants.Api.API_TOKEN
 import com.github.cesar1287.filmes20mob.utils.Constants.Api.API_TOKEN_KEY
 import com.github.cesar1287.filmes20mob.utils.Constants.Api.BASE_URL
 import com.github.cesar1287.filmes20mob.utils.Constants.Api.QUERY_PARAM_LANGUAGE_LABEL
-import com.github.cesar1287.filmes20mob.utils.Constants.Api.QUERY_PARAM_LANGUAGE_VALUE
 import com.github.cesar1287.filmes20mob.utils.Constants.Api.QUERY_PARAM_REGION_LABEL
 import com.github.cesar1287.filmes20mob.utils.Constants.Api.QUERY_PARAM_REGION_VALUE
+import com.github.cesar1287.filmes20mob.utils.Constants.Api.queryParamLanguageValue
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -39,7 +39,7 @@ object ApiService {
             .addInterceptor { chain ->
                 val url = chain.request().url.newBuilder()
                     .addQueryParameter(API_TOKEN_KEY, API_TOKEN)
-                    .addQueryParameter(QUERY_PARAM_LANGUAGE_LABEL, QUERY_PARAM_LANGUAGE_VALUE)
+                    .addQueryParameter(QUERY_PARAM_LANGUAGE_LABEL, queryParamLanguageValue())
                     .addQueryParameter(QUERY_PARAM_REGION_LABEL, QUERY_PARAM_REGION_VALUE)
                     .build()
                 val newRequest = chain.request().newBuilder().url(url).build()
