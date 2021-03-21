@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.FragmentHomeBinding
 import com.github.cesar1287.filmes20mob.ui.home.adapter.HomeAdapter
 import com.github.cesar1287.filmes20mob.utils.Command
 import com.github.cesar1287.filmes20mob.utils.GenresCache
+import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment() {
@@ -19,13 +21,17 @@ class HomeFragment : BaseFragment() {
     private val homeViewModel: HomeViewModel by viewModel()
 
     private val watchMoviesAdapter : HomeAdapter by lazy{
-        HomeAdapter{
+        HomeAdapter({
             it?.let {
 //                val intent = Intent(activity, MovieDetailsActivity::class.java)
 //                intent.putExtra(KEY_INTENT_MOVIE_ID, it.id)
 //                startActivity(intent)
             }
-        }
+        }, { favoriteMovie ->
+            favoriteMovie?.let {
+                homeViewModel.saveFavoriteMovie(it)
+            }
+        })
     }
 
     override fun onCreateView(
@@ -54,6 +60,12 @@ class HomeFragment : BaseFragment() {
                 GenresCache.genres = it
             }
             loadContent()
+        })
+
+        homeViewModel.onMovieSaved.observe(viewLifecycleOwner, {
+            homeBinding?.rvHomeMoviesList?.let {
+                Snackbar.make(it, getString(R.string.movie_favorite_successfully), Snackbar.LENGTH_LONG).show()
+            }
         })
     }
 

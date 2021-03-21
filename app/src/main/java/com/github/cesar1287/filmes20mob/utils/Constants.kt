@@ -5,7 +5,7 @@ class Constants {
         const val BASE_URL = "https://api.themoviedb.org/3/"
         const val BASE_URL_W154_IMAGE = "https://image.tmdb.org/t/p/w154"
         const val BASE_URL_W185_IMAGE = "https://image.tmdb.org/t/p/w185"
-        const val BASE_URL_W342_IMAGE = "https://image.tmdb.org/t/p/w342"
+        const val BASE_URL_W500_IMAGE = "https://image.tmdb.org/t/p/w500"
         const val BASE_URL_W780_IMAGE = "https://image.tmdb.org/t/p/w780"
         const val API_TOKEN = "3fdab48e2bddf5d597050debe64abb1c"
         const val API_TOKEN_KEY = "api_key"
@@ -31,6 +31,7 @@ class Constants {
 
     object Firebase {
         const val FIRESTORE_COLLECTION_USERS = "users"
+        const val FIRESTORE_COLLECTION_MOVIES = "movies"
         const val FIRESTORE_LOG_KEY = "Firebase Firestore"
         const val STORAGE_LOG_KEY = "Firebase Storage"
     }

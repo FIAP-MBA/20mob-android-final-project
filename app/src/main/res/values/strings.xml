@@ -16,4 +16,10 @@
     <string name="devs_label">César Rodrigues RM336648\n Rafael Barros RM336738\n Valmir Torres RM336666\n Welton Dornelas RM336708</string>
     <string name="share_movie_message">Olá, veja agora o filme %1$s. %2$s\n\nConfira este e outros filmes no app Filmes 20MOB. :)</string>
     <string name="share_using">Selecione:</string>
+    <string name="menu_lauches">Lançamentos</string>
+    <string name="menu_favorite">Favoritos</string>
+    <string name="menu_profile">Perfil</string>
+    <string name="no_favorite_label">Você ainda não tem nenhum favorito :(\n\nAdicione na tela de Lançamentos</string>
+    <string name="movie_favorite_successfully">Filme favoritado com sucesso</string>
+    <string name="movie_removed_from_favorites_successfully">Filme removido com sucesso dos favoritos</string>
 </resources>

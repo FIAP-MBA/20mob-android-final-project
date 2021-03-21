@@ -1,19 +1,19 @@
-package com.github.cesar1287.filmes20mob.ui.home.adapter
+package com.github.cesar1287.filmes20mob.ui.favorite.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.databinding.WatchCardItemBinding
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.utils.GlideApp
 
-class HomeAdapter(
+class FavoriteAdapter(
+    private val moviesList: List<MovieItem>,
     private val onItemClicked: (MovieItem?) -> Unit,
     private val onFavoriteClick: (MovieItem?) -> Unit
-) : PagedListAdapter<MovieItem, HomeAdapter.ViewHolder>(MovieItem.DIFF_CALLBACK) {
+) : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = WatchCardItemBinding
@@ -22,7 +22,11 @@ class HomeAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position), onItemClicked, onFavoriteClick)
+        holder.bind(moviesList[position], onItemClicked, onFavoriteClick)
+    }
+
+    override fun getItemCount(): Int {
+        return moviesList.size
     }
 
     class ViewHolder(
@@ -33,6 +37,8 @@ class HomeAdapter(
             onItemClicked: (MovieItem?) -> Unit,
             onFavoriteClick: (MovieItem?) -> Unit
         ) = with(binding) {
+            btFavoriteMovie.setImageResource(R.drawable.ic_favorite_24px)
+
             movie?.let {
                 GlideApp.with(itemView.context)
                     .load(movie.posterPath)
@@ -63,16 +69,7 @@ class HomeAdapter(
                         )
                     )
                 }
-
-                if (movie.isFavorite == true) {
-                    btFavoriteMovie.setImageResource(R.drawable.ic_favorite_24px)
-                } else {
-                    btFavoriteMovie.setImageResource(R.drawable.ic_favorite_border_24px)
-                }
-
                 btFavoriteMovie.setOnClickListener {
-                    movie.isFavorite = true
-                    btFavoriteMovie.setImageResource(R.drawable.ic_favorite_24px)
                     onFavoriteClick(movie)
                 }
             }

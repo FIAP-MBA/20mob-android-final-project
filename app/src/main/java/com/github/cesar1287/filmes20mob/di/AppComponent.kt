@@ -9,7 +9,7 @@ import org.koin.core.module.Module
 object AppComponent {
 
     fun getAllModules(): List<Module> =
-            listOf(*getDomainModules(), *getDataModules(), *getViewModelModules())
+        listOf(*getDomainModules(), *getDataModules(), *getViewModelModules())
 
     private fun getViewModelModules(): Array<Module> = arrayOf(viewModelModules)
 

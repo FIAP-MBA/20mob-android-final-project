@@ -6,6 +6,7 @@ import com.github.cesar1287.filmes20mob.ui.home.data.HomeRepository
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.model.MoviesResults
 import com.github.cesar1287.filmes20mob.utils.GenresCache
+import com.github.cesar1287.filmes20mob.utils.ImageSizeEnum
 import com.github.cesar1287.filmes20mob.utils.ResponseApi
 
 class HomeUseCase(
@@ -18,6 +19,7 @@ class HomeUseCase(
 
         movies?.forEach { movie ->
             movie.posterPath = movie.posterPath?.getPosterImagePath()
+            movie.backdropPath = movie.backdropPath?.getPosterImagePath(ImageSizeEnum.LARGE)
             movie.releaseDate = movie.releaseDate?.getYear()
             movieGenres?.let {
                 val genres = movie.genreIds.map { it to movieGenres[it] }.toMap()
@@ -29,5 +31,9 @@ class HomeUseCase(
 
     suspend fun loadGenres(): ResponseApi {
         return homeRepository.getGenres()
+    }
+
+    suspend fun saveMovie(movie: MovieItem): ResponseApi {
+        return homeRepository.saveMovie(movie)
     }
 }

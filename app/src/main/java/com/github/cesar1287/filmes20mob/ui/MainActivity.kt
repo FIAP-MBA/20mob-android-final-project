@@ -1,10 +1,8 @@
 package com.github.cesar1287.filmes20mob.ui
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.firebase.ui.auth.AuthUI
@@ -14,7 +12,6 @@ import com.github.cesar1287.filmes20mob.base.BaseActivity
 import com.github.cesar1287.filmes20mob.databinding.ActivityMainBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-
 
 class MainActivity : BaseActivity() {
 
