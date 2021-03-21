@@ -81,14 +81,6 @@
         <item name="android:textAlignment">center</item>
     </style>
 
-    <style name="MovieTvCertification">
-        <item name="android:layout_marginTop">@dimen/margin_quarter</item>
-        <item name="android:layout_marginEnd">@dimen/margin_quarter</item>
-        <item name="android:paddingStart">@dimen/margin_quarter</item>
-        <item name="android:paddingEnd">@dimen/margin_quarter</item>
-        <item name="android:background">@drawable/bg_movie_tv_age</item>
-    </style>
-
     <style name="TitleDefault">
         <item name="android:layout_marginTop">@dimen/margin_double</item>
         <item name="android:layout_marginBottom">@dimen/margin_default</item>
