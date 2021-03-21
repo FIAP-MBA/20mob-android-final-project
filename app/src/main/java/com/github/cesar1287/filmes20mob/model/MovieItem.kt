@@ -17,6 +17,7 @@ data class MovieItem(
     @SerializedName("original_title")
     val originalTitle: String,
     val overview: String,
+    val homepage: String?,
     val popularity: Double,
     @SerializedName("poster_path")
     var posterPath: String?,
