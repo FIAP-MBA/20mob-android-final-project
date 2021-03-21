@@ -15,6 +15,6 @@ class ProfileUseCase(private val repository: ProfileRepository) {
             Uri.parse(img)?.let {
                 repository.updateUserInfo(name, it, onComplete)
             } ?: repository.updateUserInfo(name, onComplete =  onComplete)
-        }
+        } ?: repository.updateUserInfo(name, onComplete =  onComplete)
     }
 }
