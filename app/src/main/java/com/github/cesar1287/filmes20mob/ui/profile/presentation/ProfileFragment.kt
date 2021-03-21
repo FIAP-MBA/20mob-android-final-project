@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -66,13 +67,19 @@ class ProfileFragment: BaseFragment() {
             fillData(profile)
         }
 
+        viewModel.isProfileUpdated.observe(viewLifecycleOwner) { isUpdated ->
+            if (isUpdated) {
+                viewModel.loadUser()
+            }
+        }
+
         viewModel.command.observe(viewLifecycleOwner) {
             when(it) {
                 is Command.Loading ->  {
                     if (it.value) showLoading()
                     else hideLoading()
                 }
-                is Command.Error -> {}
+                is Command.Error -> Toast.makeText(context, it.error, Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -83,6 +90,7 @@ class ProfileFragment: BaseFragment() {
     }
 
     private fun imagePicker() {
+        updatedImage = null
         ImagePicker.create(this)
             .returnMode(ReturnMode.ALL)
             .folderMode(false)
@@ -130,11 +138,13 @@ class ProfileFragment: BaseFragment() {
     private fun fillData(profile: Profile) {
         binding.profileNameEditText.setText(profile.name)
         binding.profileEmailEditText.setText(profile.email)
-        context?.let {
-            Glide.with(it)
-                .load(profile.image)
-                .placeholder(R.drawable.ic_default_person)
-                .into(binding.profileImage)
+        if (profile.image != null && updatedImage == null) {
+            context?.let {
+                Glide.with(it)
+                    .load(profile.image.toString())
+                    .placeholder(R.drawable.ic_default_person)
+                    .into(binding.profileImage)
+            }
         }
     }
 
@@ -142,12 +152,6 @@ class ProfileFragment: BaseFragment() {
         binding.profileImage.isClickable = value
         binding.profileNameEditText.isEnabled = value
         binding.profileInputLayoutName.isEnabled = value
-        binding.profileEmailEditText.isEnabled = value
-        binding.profileInputLayoutEmail.isEnabled = value
-        binding.profilePasswordEditText.isEnabled = value
-        binding.profileInputLayoutPassword.isEnabled = value
-        binding.profileConfirmPasswordEditText.isEnabled = value
-        binding.profileInputLayoutConfirmPassword.isEnabled = value
 
         binding.createAccountButton.apply {
             text = if (value) {
@@ -167,9 +171,6 @@ class ProfileFragment: BaseFragment() {
     private fun updateUser() {
         viewModel.updateUser(
             name = binding.profileNameEditText.text.toString(),
-            email = binding.profileEmailEditText.text.toString(),
-            password = binding.profilePasswordEditText.text.toString(),
-            confirmPassword = binding.profileConfirmPasswordEditText.text.toString(),
             image = updatedImage
         )
     }
