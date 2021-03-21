@@ -31,7 +31,8 @@ data class MovieItem(
     var genres: String? = "",
     var year: String? = "",
     @SerializedName("genre_ids")
-    val genreIds: List<Int> = listOf()
+    val genreIds: List<Int> = listOf(),
+    var isFavorite: Boolean? = false
 ) : Parcelable {
 
     companion object {

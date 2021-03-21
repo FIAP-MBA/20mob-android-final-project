@@ -37,6 +37,8 @@ class FavoriteAdapter(
             onItemClicked: (MovieItem?) -> Unit,
             onFavoriteClick: (MovieItem?) -> Unit
         ) = with(binding) {
+            btFavoriteMovie.setImageResource(R.drawable.ic_favorite_24px)
+
             movie?.let {
                 GlideApp.with(itemView.context)
                     .load(movie.posterPath)

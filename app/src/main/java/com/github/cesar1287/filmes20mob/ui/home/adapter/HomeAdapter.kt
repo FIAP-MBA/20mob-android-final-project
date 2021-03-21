@@ -63,7 +63,16 @@ class HomeAdapter(
                         )
                     )
                 }
+
+                if (movie.isFavorite == true) {
+                    btFavoriteMovie.setImageResource(R.drawable.ic_favorite_24px)
+                } else {
+                    btFavoriteMovie.setImageResource(R.drawable.ic_favorite_border_24px)
+                }
+
                 btFavoriteMovie.setOnClickListener {
+                    movie.isFavorite = true
+                    btFavoriteMovie.setImageResource(R.drawable.ic_favorite_24px)
                     onFavoriteClick(movie)
                 }
             }

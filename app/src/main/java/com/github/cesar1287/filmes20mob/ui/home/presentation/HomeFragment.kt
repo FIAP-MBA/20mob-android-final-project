@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.FragmentHomeBinding
 import com.github.cesar1287.filmes20mob.ui.home.adapter.HomeAdapter
 import com.github.cesar1287.filmes20mob.utils.Command
 import com.github.cesar1287.filmes20mob.utils.GenresCache
+import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment() {
@@ -58,6 +60,12 @@ class HomeFragment : BaseFragment() {
                 GenresCache.genres = it
             }
             loadContent()
+        })
+
+        homeViewModel.onMovieSaved.observe(viewLifecycleOwner, {
+            homeBinding?.rvHomeMoviesList?.let {
+                Snackbar.make(it, getString(R.string.movie_favorite_successfully), Snackbar.LENGTH_LONG).show()
+            }
         })
     }
 

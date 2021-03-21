@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.FragmentFavoriteBinding
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.ui.favorite.adapter.FavoriteAdapter
 import com.github.cesar1287.filmes20mob.utils.Command
+import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : BaseFragment() {
@@ -20,6 +22,8 @@ class FavoriteFragment : BaseFragment() {
     private var favoriteBinding: FragmentFavoriteBinding? = null
 
     private val favoriteViewModel: FavoriteViewModel by viewModel()
+
+    private var moviesList: MutableList<MovieItem> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,9 +45,28 @@ class FavoriteFragment : BaseFragment() {
         favoriteViewModel.onFavoriteMoviesLoaded.observe(viewLifecycleOwner, {
             if (!it.isNullOrEmpty()) {
                 setupContentVisibility(visible = true)
-                setupRecyclerView(it)
+                moviesList.addAll(it)
+                setupRecyclerView()
             } else {
                 setupContentVisibility(visible = false)
+            }
+        })
+
+        favoriteViewModel.onFavoriteMovieRemoved.observe(viewLifecycleOwner, { movieItem ->
+            favoriteBinding?.rvHomeMoviesList?.let { recyclerView ->
+                movieItem?.let { movieItemNonNull ->
+                    val index = moviesList.indexOf(movieItemNonNull)
+                    moviesList.removeAt(index)
+                    recyclerView.adapter?.notifyItemRemoved(index)
+                    if (moviesList.isEmpty()) {
+                        setupContentVisibility(visible = false)
+                    }
+                }
+                Snackbar.make(
+                    recyclerView,
+                    getString(R.string.movie_removed_from_favorites_successfully),
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         })
     }
@@ -57,13 +80,13 @@ class FavoriteFragment : BaseFragment() {
         }
     }
 
-    private fun setupRecyclerView(movies: List<MovieItem>) {
+    private fun setupRecyclerView() {
         val layoutManager = LinearLayoutManager(requireContext())
         favoriteBinding?.rvHomeMoviesList?.layoutManager = layoutManager
-        val creditCardAdapter = FavoriteAdapter(movies,  { movieClicked ->
+        val creditCardAdapter = FavoriteAdapter(moviesList, { movieClicked ->
             //todo
         }, { favoriteRemoved ->
-
+            favoriteRemoved?.let { favoriteViewModel.removeMovieFromFavorites(it) }
         })
         favoriteBinding?.rvHomeMoviesList?.adapter = creditCardAdapter
     }
