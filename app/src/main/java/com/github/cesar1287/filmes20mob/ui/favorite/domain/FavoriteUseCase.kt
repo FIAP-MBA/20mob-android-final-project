@@ -8,6 +8,6 @@ class FavoriteUseCase(
 ) {
 
     suspend fun getFavoriteMoviesFromUser(): ResponseApi {
-        TODO("Not yet implemented")
+        return favoriteRepository.getFavoriteMoviesFromUser()
     }
 }
