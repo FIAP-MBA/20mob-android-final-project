@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.features.ReturnMode
 import com.esafirm.imagepicker.model.Image
@@ -20,9 +19,10 @@ import com.github.cesar1287.filmes20mob.databinding.FragmentProfileBinding
 import com.github.cesar1287.filmes20mob.model.Profile
 import com.github.cesar1287.filmes20mob.ui.MainActivity
 import com.github.cesar1287.filmes20mob.utils.Command
+import com.github.cesar1287.filmes20mob.utils.GlideApp
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ProfileFragment: BaseFragment() {
+class ProfileFragment : BaseFragment() {
     private val viewModel: ProfileViewModel by viewModel()
     private lateinit var binding: FragmentProfileBinding
     private var permissionToRecordAccepted = false
@@ -74,8 +74,8 @@ class ProfileFragment: BaseFragment() {
         }
 
         viewModel.command.observe(viewLifecycleOwner) {
-            when(it) {
-                is Command.Loading ->  {
+            when (it) {
+                is Command.Loading -> {
                     if (it.value) showLoading()
                     else hideLoading()
                 }
@@ -123,7 +123,7 @@ class ProfileFragment: BaseFragment() {
             ImagePicker.getFirstImageOrNull(data)?.let { image ->
                 updatedImage = image
                 context?.let {
-                    Glide.with(it)
+                    GlideApp.with(it)
                         .load(image.path)
                         .placeholder(R.drawable.ic_default_person)
                         .into(binding.profileImage)
@@ -140,7 +140,7 @@ class ProfileFragment: BaseFragment() {
         binding.profileEmailEditText.setText(profile.email)
         if (profile.image != null && updatedImage == null) {
             context?.let {
-                Glide.with(it)
+                GlideApp.with(it)
                     .load(profile.image.toString())
                     .placeholder(R.drawable.ic_default_person)
                     .into(binding.profileImage)
@@ -156,7 +156,8 @@ class ProfileFragment: BaseFragment() {
         binding.createAccountButton.apply {
             text = if (value) {
                 context?.getString(R.string.update_label)
-            } else context?.getString(R.string.create_account_label
+            } else context?.getString(
+                R.string.create_account_label
             )
             setOnClickListener {
                 if (value) {

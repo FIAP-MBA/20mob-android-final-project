@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cesar1287.filmes20mob.base.BaseFragment
@@ -38,10 +39,22 @@ class FavoriteFragment : BaseFragment() {
 
     private fun setupObservables() {
         favoriteViewModel.onFavoriteMoviesLoaded.observe(viewLifecycleOwner, {
-            it?.let { moviesList ->
-                setupRecyclerView(moviesList)
+            if (!it.isNullOrEmpty()) {
+                setupContentVisibility(visible = true)
+                setupRecyclerView(it)
+            } else {
+                setupContentVisibility(visible = false)
             }
         })
+    }
+
+    private fun setupContentVisibility(visible: Boolean) {
+        favoriteBinding?.let {
+            with(it) {
+                vgFavoriteEmptyState.isVisible = !visible
+                rvHomeMoviesList.isVisible = visible
+            }
+        }
     }
 
     private fun setupRecyclerView(movies: List<MovieItem>) {
@@ -50,7 +63,7 @@ class FavoriteFragment : BaseFragment() {
         val creditCardAdapter = FavoriteAdapter(movies,  { movieClicked ->
             //todo
         }, { favoriteRemoved ->
-            //todo
+
         })
         favoriteBinding?.rvHomeMoviesList?.adapter = creditCardAdapter
     }

@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.databinding.WatchCardItemBinding
 import com.github.cesar1287.filmes20mob.model.MovieItem
+import com.github.cesar1287.filmes20mob.utils.GlideApp
 
 class HomeAdapter(
     private val onItemClicked: (MovieItem?) -> Unit,
@@ -34,7 +34,7 @@ class HomeAdapter(
             onFavoriteClick: (MovieItem?) -> Unit
         ) = with(binding) {
             movie?.let {
-                Glide.with(itemView.context)
+                GlideApp.with(itemView.context)
                     .load(movie.posterPath)
                     .placeholder(R.drawable.app_logo_512)
                     .into(ivWatchImage)

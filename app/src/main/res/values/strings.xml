@@ -19,4 +19,5 @@
     <string name="menu_lauches">Lançamentos</string>
     <string name="menu_favorite">Favoritos</string>
     <string name="menu_profile">Perfil</string>
+    <string name="no_favorite_label">Você ainda não tem nenhum favorito :(\n\nAdicione na tela de Lançamentos</string>
 </resources>
