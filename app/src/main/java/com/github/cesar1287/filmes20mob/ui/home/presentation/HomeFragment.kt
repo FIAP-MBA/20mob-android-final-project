@@ -22,18 +22,22 @@ class HomeFragment : BaseFragment() {
     private var homeBinding: FragmentHomeBinding? = null
     private val homeViewModel: HomeViewModel by viewModel()
 
-    private val watchMoviesAdapter : HomeAdapter by lazy{
-        HomeAdapter({
-            it?.let {
-                val args = Bundle()
-                args.putParcelable(KEY_INTENT_MOVIE, it)
-                findNavController().navigate(R.id.action_homeFragment_to_movieDetailFragment, args)
-            }
-        }, { favoriteMovie ->
-            favoriteMovie?.let {
-                homeViewModel.saveFavoriteMovie(it)
-            }
-        })
+    private val watchMoviesAdapter: HomeAdapter by lazy {
+        HomeAdapter(
+            { movieClicked ->
+                movieClicked?.let {
+                    val args = Bundle()
+                    args.putParcelable(KEY_INTENT_MOVIE, it)
+                    findNavController().navigate(
+                        R.id.action_homeFragment_to_movieDetailFragment,
+                        args
+                    )
+                }
+            }, { favoriteMovie ->
+                favoriteMovie?.let {
+                    homeViewModel.saveFavoriteMovie(it)
+                }
+            })
     }
 
     override fun onCreateView(
@@ -66,7 +70,11 @@ class HomeFragment : BaseFragment() {
 
         homeViewModel.onMovieSaved.observe(viewLifecycleOwner, {
             homeBinding?.rvHomeMoviesList?.let {
-                Snackbar.make(it, getString(R.string.movie_favorite_successfully), Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    it,
+                    getString(R.string.movie_favorite_successfully),
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         })
     }
@@ -76,13 +84,13 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setupRecyclerView() {
-        homeBinding?.rvHomeMoviesList?.apply{
+        homeBinding?.rvHomeMoviesList?.apply {
             layoutManager = LinearLayoutManager(this.context)
             adapter = watchMoviesAdapter
         }
     }
 
-    private fun loadContent(){
+    private fun loadContent() {
         homeViewModel.moviesPagedList?.observe(viewLifecycleOwner) { pagedList ->
             watchMoviesAdapter.submitList(pagedList)
         }
