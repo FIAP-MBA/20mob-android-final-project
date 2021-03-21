@@ -72,7 +72,6 @@ class MainActivity : BaseActivity() {
                 AuthUI.getInstance()
                     .createSignInIntentBuilder()
                     .setAvailableProviders(providers)
-                    .setIsSmartLockEnabled(false)
                     .build(),
                 RC_SIGN_IN
             )
