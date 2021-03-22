@@ -4,10 +4,6 @@ import java.util.*
 
 class Constants {
     object Api {
-        const val BASE_URL = "https://api.themoviedb.org/3/"
-        const val BASE_URL_W154_IMAGE = "https://image.tmdb.org/t/p/w154"
-        const val BASE_URL_W185_IMAGE = "https://image.tmdb.org/t/p/w185"
-        const val BASE_URL_W500_IMAGE = "https://image.tmdb.org/t/p/w500"
         const val API_TOKEN = "3fdab48e2bddf5d597050debe64abb1c"
         const val API_TOKEN_KEY = "api_key"
         const val QUERY_PARAM_LANGUAGE_LABEL = "language"
@@ -31,5 +27,6 @@ class Constants {
 
     object Firebase {
         const val FIRESTORE_COLLECTION_MOVIES = "movies"
+        const val CHANNEL_ID = "Novidades"
     }
 }

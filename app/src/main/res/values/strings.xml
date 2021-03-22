@@ -22,6 +22,8 @@
     <string name="movie_removed_from_favorites_successfully">Movie successfully removed from favorites</string>
     <string name="synopsis">Synopsis</string>
     <string name="nearby_theaters">Cinema nearby</string>
+    <string name="default_notification_channel_id">Novidades</string>
+    <string name="channel_description">Todas as novidades do mundo do cinema</string>
     <string name="error_default">Error! Something unexpected happened, try again!</string>
     <string name="error_debug">"Error: %1$s, stack:\n %2$s"</string>
     <string name="error_favorite_default">Failed to load favorites, please try again</string>
