@@ -37,12 +37,13 @@
         <ImageView
             android:id="@+id/ivMovieDetailsPosterImage"
             android:layout_width="0dp"
-            android:layout_height="230dp"
-            android:layout_marginTop="45dp"
+            android:layout_height="@dimen/image_background_detail_height"
+            android:layout_marginTop="@dimen/custom_margin_top_background_detail"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <include
             android:id="@+id/cmpMovieDetailsBottomCard"

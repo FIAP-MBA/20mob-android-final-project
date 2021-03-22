@@ -33,4 +33,7 @@
     <dimen name="border_profile_image">2dp</dimen>
     <dimen name="image_profile_width">128dp</dimen>
     <dimen name="image_profile_height">128dp</dimen>
+
+    <dimen name="custom_margin_top_background_detail">45dp</dimen>
+    <dimen name="image_background_detail_height">230dp</dimen>
 </resources>
