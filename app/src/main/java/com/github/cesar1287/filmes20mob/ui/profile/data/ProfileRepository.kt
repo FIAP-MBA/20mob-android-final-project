@@ -1,6 +1,7 @@
 package com.github.cesar1287.filmes20mob.ui.profile.data
 
 import android.net.Uri
+import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.model.Profile
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
@@ -25,7 +26,7 @@ class ProfileRepository {
     fun updateUserInfo(
         name: String,
         image: Uri? = null,
-        onComplete: (isSuccessful: Boolean, message: String?) -> Unit
+        onComplete: (isSuccessful: Boolean, message: Int) -> Unit
     ) {
         val user = Firebase.auth.currentUser
 
@@ -35,7 +36,8 @@ class ProfileRepository {
         }
 
         user?.updateProfile(profileUpdates.build())?.addOnCompleteListener { task ->
-            onComplete(task.isSuccessful,  task.exception?.localizedMessage)
-        } ?: onComplete(false, null)
+            val error = R.string.error_default
+            onComplete(task.isSuccessful, error)
+        } ?: onComplete(false, R.string.error_default)
     }
 }

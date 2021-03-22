@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import com.esafirm.imagepicker.features.ImagePicker
@@ -20,11 +19,12 @@ import com.github.cesar1287.filmes20mob.model.Profile
 import com.github.cesar1287.filmes20mob.ui.MainActivity
 import com.github.cesar1287.filmes20mob.utils.Command
 import com.github.cesar1287.filmes20mob.utils.GlideApp
+import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ProfileFragment : BaseFragment() {
     private val viewModel: ProfileViewModel by viewModel()
-    private lateinit var binding: FragmentProfileBinding
+    private var binding: FragmentProfileBinding? = null
     private var permissionToRecordAccepted = false
     private var updatedImage: Image? = null
 
@@ -32,9 +32,9 @@ class ProfileFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,10 +47,10 @@ class ProfileFragment : BaseFragment() {
     private fun setupView() {
         viewModel.command = command
 
-        binding.profileAboutUsButton.setOnClickListener {
+        binding?.profileAboutUsButton?.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_aboutUsFragment)
         }
-        binding.profileImage.setOnClickListener {
+        binding?.profileImage?.setOnClickListener {
             imagePicker()
         }
     }
@@ -79,7 +79,11 @@ class ProfileFragment : BaseFragment() {
                     if (it.value) showLoading()
                     else hideLoading()
                 }
-                is Command.Error -> Toast.makeText(context, it.error, Toast.LENGTH_LONG).show()
+                is Command.Error -> {
+                    binding?.profileScrollView?.let { view ->
+                        Snackbar.make(view, getString(it.error), Snackbar.LENGTH_LONG).show()
+                    }
+                }
             }
         }
     }
@@ -121,14 +125,15 @@ class ProfileFragment : BaseFragment() {
     ) {
         if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
             ImagePicker.getFirstImageOrNull(data)?.let { image ->
-                updatedImage = image
-                context?.let {
-                    GlideApp.with(it)
-                        .load(image.path)
-                        .placeholder(R.drawable.ic_default_person)
-                        .into(binding.profileImage)
+                binding?.profileImage?.let { view ->
+                    context?.let {
+                        GlideApp.with(it)
+                            .load(image.path)
+                            .placeholder(R.drawable.ic_default_person)
+                            .into(view)
+                    }
                 }
-
+                updatedImage = image
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
@@ -136,24 +141,26 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun fillData(profile: Profile) {
-        binding.profileNameEditText.setText(profile.name)
-        binding.profileEmailEditText.setText(profile.email)
+        binding?.profileNameEditText?.setText(profile.name)
+        binding?.profileEmailEditText?.setText(profile.email)
         if (profile.image != null && updatedImage == null) {
-            context?.let {
-                GlideApp.with(it)
-                    .load(profile.image.toString())
-                    .placeholder(R.drawable.ic_default_person)
-                    .into(binding.profileImage)
+            binding?.profileImage?.let { view ->
+                context?.let {
+                    GlideApp.with(it)
+                        .load(profile.image.toString())
+                        .placeholder(R.drawable.ic_default_person)
+                        .into(view)
+                }
             }
         }
     }
 
     private fun disableAndEnableItems(value: Boolean) {
-        binding.profileImage.isClickable = value
-        binding.profileNameEditText.isEnabled = value
-        binding.profileInputLayoutName.isEnabled = value
+        binding?.profileImage?.isClickable = value
+        binding?.profileNameEditText?.isEnabled = value
+        binding?.profileInputLayoutName?.isEnabled = value
 
-        binding.createAccountButton.apply {
+        binding?.createAccountButton?.apply {
             text = if (value) {
                 context?.getString(R.string.update_label)
             } else context?.getString(
@@ -171,13 +178,18 @@ class ProfileFragment : BaseFragment() {
 
     private fun updateUser() {
         viewModel.updateUser(
-            name = binding.profileNameEditText.text.toString(),
+            name = binding?.profileNameEditText?.text.toString(),
             image = updatedImage
         )
     }
 
     private fun createUser() {
         MainActivity.signIn(activity)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
     override var command: MutableLiveData<Command> = MutableLiveData()

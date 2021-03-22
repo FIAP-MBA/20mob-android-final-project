@@ -1,5 +1,6 @@
 package com.github.cesar1287.filmes20mob.ui.home.data
 
+import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.api.ApiService
 import com.github.cesar1287.filmes20mob.base.BaseRepository
 import com.github.cesar1287.filmes20mob.model.Genre
@@ -13,7 +14,6 @@ import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
-import java.lang.Exception
 
 class HomeRepositoryImpl : HomeRepository, BaseRepository() {
 
@@ -52,13 +52,14 @@ class HomeRepositoryImpl : HomeRepository, BaseRepository() {
             ).document(movie.id.toString()).set(movie, SetOptions.merge()).await()
 
             Firebase.auth.uid?.let {
-                val movieRef = Firebase.firestore.collection(FIRESTORE_COLLECTION_MOVIES).document(movie.id.toString())
+                val movieRef = Firebase.firestore.collection(FIRESTORE_COLLECTION_MOVIES)
+                    .document(movie.id.toString())
                 movieRef.update("uid", FieldValue.arrayUnion(it)).await()
             }
 
             ResponseApi.Success(true)
         } catch (exception: Exception) {
-            ResponseApi.Error("Falha ao adicionar o filme, tente novamente")
+            ResponseApi.Error(R.string.error_home_add_favorite)
         }
     }
 }

@@ -9,15 +9,15 @@ import com.github.cesar1287.filmes20mob.databinding.FragmentAboutUsBinding
 
 class AboutUsFragment: Fragment() {
 
-    private lateinit var binding: FragmentAboutUsBinding
+    private var binding: FragmentAboutUsBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = FragmentAboutUsBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,9 +27,9 @@ class AboutUsFragment: Fragment() {
     }
 
     private fun setupView() {
-        binding.aboutUsVersionText.text = setVersionApp()
+        binding?.aboutUsVersionText?.text = setVersionApp()
 
-        binding.aboutUsBackButton.setOnClickListener {
+        binding?.aboutUsBackButton?.setOnClickListener {
             activity?.onBackPressed()
         }
     }
@@ -39,5 +39,10 @@ class AboutUsFragment: Fragment() {
             return it.packageManager.getPackageInfo(it.packageName, 0).versionName
         }
         return "-"
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

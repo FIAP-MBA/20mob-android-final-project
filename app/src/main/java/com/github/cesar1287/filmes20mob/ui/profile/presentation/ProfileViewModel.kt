@@ -10,7 +10,7 @@ import com.github.cesar1287.filmes20mob.utils.Command
 
 class ProfileViewModel(
     private val profileUseCase: ProfileUseCase
-): BaseViewModel() {
+) : BaseViewModel() {
     private var _isUserLogged = MutableLiveData<Boolean>()
     private var _userProfile = MutableLiveData<Profile>()
     private var _isProfileUpdated = MutableLiveData<Boolean>()
@@ -44,11 +44,11 @@ class ProfileViewModel(
         } ?: profileUseCase.updateUserInfo(name, onComplete = ::handlerFirebaseCalls)
     }
 
-    private fun handlerFirebaseCalls(isSuccessful: Boolean, message: String?) {
-        command.postValue(Command.Loading(false))
+    private fun handlerFirebaseCalls(isSuccessful: Boolean, message: Int) {
+        command.value = Command.Loading(false)
         _isProfileUpdated.postValue(isSuccessful)
         if (!isSuccessful) {
-            command.postValue(Command.Error(error = message ?: "Erro! Algo inesperado ocorreu, tente novamente."))
+            command.postValue(Command.Error(error = message))
         }
     }
 }
