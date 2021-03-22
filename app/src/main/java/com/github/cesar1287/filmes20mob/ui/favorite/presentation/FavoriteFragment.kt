@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.base.BaseFragment
@@ -13,6 +14,7 @@ import com.github.cesar1287.filmes20mob.databinding.FragmentFavoriteBinding
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.ui.favorite.adapter.FavoriteAdapter
 import com.github.cesar1287.filmes20mob.utils.Command
+import com.github.cesar1287.filmes20mob.utils.Constants
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -45,7 +47,7 @@ class FavoriteFragment : BaseFragment() {
         favoriteViewModel.onFavoriteMoviesLoaded.observe(viewLifecycleOwner, {
             if (!it.isNullOrEmpty()) {
                 setupContentVisibility(visible = true)
-                moviesList.addAll(it)
+                moviesList = it.toMutableList()
                 setupRecyclerView()
             } else {
                 setupContentVisibility(visible = false)
@@ -83,12 +85,19 @@ class FavoriteFragment : BaseFragment() {
     private fun setupRecyclerView() {
         val layoutManager = LinearLayoutManager(requireContext())
         favoriteBinding?.rvHomeMoviesList?.layoutManager = layoutManager
-        val creditCardAdapter = FavoriteAdapter(moviesList, { movieClicked ->
-            //todo
+        val adapter = FavoriteAdapter(moviesList, { movieClicked ->
+            movieClicked?.let {
+                val args = Bundle()
+                args.putParcelable(Constants.Intent.KEY_INTENT_MOVIE, it)
+                findNavController().navigate(
+                    R.id.action_favoriteFragment_to_movieDetailFragment,
+                    args
+                )
+            }
         }, { favoriteRemoved ->
             favoriteRemoved?.let { favoriteViewModel.removeMovieFromFavorites(it) }
         })
-        favoriteBinding?.rvHomeMoviesList?.adapter = creditCardAdapter
+        favoriteBinding?.rvHomeMoviesList?.adapter = adapter
     }
 
     override fun onDestroyView() {

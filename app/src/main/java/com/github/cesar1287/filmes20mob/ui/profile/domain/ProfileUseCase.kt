@@ -10,7 +10,7 @@ class ProfileUseCase(private val repository: ProfileRepository) {
 
     fun getUserProfile(): Profile = repository.getUserInfo()
 
-    fun updateUserInfo(name: String, image: String? = null, onComplete: (isSuccessful: Boolean, message: String?) -> Unit) {
+    fun updateUserInfo(name: String, image: String? = null, onComplete: (isSuccessful: Boolean, message: Int) -> Unit) {
         image?.let { img ->
             Uri.parse(img)?.let {
                 repository.updateUserInfo(name, it, onComplete)

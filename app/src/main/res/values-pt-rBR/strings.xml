@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Filmes 20MOB</string>
+    <string name="name_label">Nome</string>
+    <string name="email_label">Email</string>
+    <string name="about_us">Sobre Filmes 20MOB</string>
+    <string name="create_account_label">Criar uma conta</string>
+    <string name="media_poster">Imagem do Filme ou Série</string>
+    <string name="info">+ Info</string>
+    <string name="gallery">Galeria</string>
+    <string name="done">Pronto</string>
+    <string name="update_label">Atualizar</string>
+    <string name="version_label">Versão:</string>
+    <string name="developed_by_label">Desenvolvido por:</string>
+    <string name="devs_label">César Rodrigues RM336648\n Rafael Barros RM336738\n Valmir Torres RM336666\n Welton Dornelas RM336708</string>
+    <string name="share_movie_message">Olá, veja agora o filme %1$s. %2$s\n\nConfira este e outros filmes no app Filmes 20MOB. :)</string>
+    <string name="share_using">Selecione:</string>
+    <string name="menu_lauches">Lançamentos</string>
+    <string name="menu_favorite">Favoritos</string>
+    <string name="menu_profile">Perfil</string>
+    <string name="no_favorite_label">Você ainda não tem nenhum favorito :(\n\nAdicione na tela de Lançamentos</string>
+    <string name="movie_favorite_successfully">Filme favoritado com sucesso</string>
+    <string name="movie_removed_from_favorites_successfully">Filme removido com sucesso dos favoritos</string>
+    <string name="synopsis">Sinopse</string>
+    <string name="nearby_theaters">Cinema próximos</string>
+    <string name="default_notification_channel_id">Novidades</string>
+    <string name="channel_description">Todas as novidades do mundo do cinema</string>
+    <string name="error_default">Erro! Algo inesperado ocorreu, tente novamente!</string>
+    <string name="error_debug">"Erro: %1$s, stack:\n %2$s"</string>
+    <string name="error_favorite_default">Falha ao carregar os favoritos, tente novamente</string>
+    <string name="error_favorite_remove">Falha ao remover o filme dos favoritos</string>
+    <string name="error_home_add_favorite">Falha ao adicionar o filme, tente novamente</string>
+</resources>

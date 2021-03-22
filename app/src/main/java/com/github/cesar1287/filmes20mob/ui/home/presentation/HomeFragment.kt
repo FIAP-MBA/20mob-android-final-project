@@ -77,6 +77,20 @@ class HomeFragment : BaseFragment() {
                 ).show()
             }
         })
+
+        homeViewModel.command.observe(viewLifecycleOwner) {
+            when (it) {
+                is Command.Loading -> {
+                    if (it.value) showLoading()
+                    else hideLoading()
+                }
+                is Command.Error -> {
+                    homeBinding?.rvHomeMoviesList?.let { view ->
+                        Snackbar.make(view, getString(it.error), Snackbar.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
     }
 
     private fun loadGenres() {
