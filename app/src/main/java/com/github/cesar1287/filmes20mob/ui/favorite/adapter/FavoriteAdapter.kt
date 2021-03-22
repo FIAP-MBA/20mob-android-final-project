@@ -8,6 +8,7 @@ import com.github.cesar1287.filmes20mob.databinding.WatchCardItemBinding
 import com.github.cesar1287.filmes20mob.extensions.shareMovie
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.utils.GlideApp
+import com.github.cesar1287.filmes20mob.utils.RegisterEventsAnalytics
 
 class FavoriteAdapter(
     private val moviesList: List<MovieItem>,
@@ -51,6 +52,7 @@ class FavoriteAdapter(
                     onItemClicked(movie)
                 }
                 btWatchShare.setOnClickListener {
+                    RegisterEventsAnalytics.registerEvent(itemView.context.getString(R.string.favorite_share))
                     itemView.context.shareMovie(movie)
                 }
                 btFavoriteMovie.setOnClickListener {

@@ -27,6 +27,7 @@ class Constants {
 
     object Firebase {
         const val FIRESTORE_COLLECTION_MOVIES = "movies"
+        const val KEY_REMOTE_CONFIG_APP_NAME = "experiment_app_name"
         const val CHANNEL_ID = "Novidades"
     }
 }

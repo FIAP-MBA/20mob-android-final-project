@@ -21,7 +21,7 @@
     <string name="movie_favorite_successfully">Successfully favored movie</string>
     <string name="movie_removed_from_favorites_successfully">Movie successfully removed from favorites</string>
     <string name="synopsis">Synopsis</string>
-    <string name="nearby_theaters">Cinema nearby</string>
+    <string name="nearby_theaters">Movie Theaters nearby</string>
     <string name="default_notification_channel_id">News</string>
     <string name="channel_description">All the news from the world of cinema</string>
     <string name="error_default">Error! Something unexpected happened, try again!</string>

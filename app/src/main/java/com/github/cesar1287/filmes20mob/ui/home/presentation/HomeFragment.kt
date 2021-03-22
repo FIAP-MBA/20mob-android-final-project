@@ -14,6 +14,7 @@ import com.github.cesar1287.filmes20mob.ui.home.adapter.HomeAdapter
 import com.github.cesar1287.filmes20mob.utils.Command
 import com.github.cesar1287.filmes20mob.utils.Constants.Intent.KEY_INTENT_MOVIE
 import com.github.cesar1287.filmes20mob.utils.GenresCache
+import com.github.cesar1287.filmes20mob.utils.RegisterEventsAnalytics
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -25,6 +26,7 @@ class HomeFragment : BaseFragment() {
     private val watchMoviesAdapter: HomeAdapter by lazy {
         HomeAdapter(
             { movieClicked ->
+                RegisterEventsAnalytics.registerEvent(getString(R.string.home_more_info))
                 movieClicked?.let {
                     val args = Bundle()
                     args.putParcelable(KEY_INTENT_MOVIE, it)
@@ -34,6 +36,7 @@ class HomeFragment : BaseFragment() {
                     )
                 }
             }, { favoriteMovie ->
+                RegisterEventsAnalytics.registerEvent(getString(R.string.home_favorite))
                 favoriteMovie?.let {
                     homeViewModel.saveFavoriteMovie(it)
                 }
