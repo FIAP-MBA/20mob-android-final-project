@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
+import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.base.BaseFragment
 import com.github.cesar1287.filmes20mob.databinding.CmpMediaDetailsBottomPosterCardBinding
 import com.github.cesar1287.filmes20mob.databinding.FragmentMovieDetailBinding
@@ -14,6 +15,7 @@ import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.utils.Command
 import com.github.cesar1287.filmes20mob.utils.Constants.Intent.KEY_INTENT_MOVIE
 import com.github.cesar1287.filmes20mob.utils.GlideApp
+import com.github.cesar1287.filmes20mob.utils.RegisterEventsAnalytics
 
 class MovieDetailFragment : BaseFragment() {
 
@@ -48,10 +50,12 @@ class MovieDetailFragment : BaseFragment() {
                 tvMovieDetailsDescriptionText.text = movie?.overview
 
                 btMovieDetailsShareButton.setOnClickListener {
+                    RegisterEventsAnalytics.registerEvent(getString(R.string.movie_detail_share))
                     movie?.let { activity?.shareMovie(movie) }
                 }
 
                 btMovieDetailNearbyTheaters.setOnClickListener {
+                    RegisterEventsAnalytics.registerEvent(getString(R.string.movie_detail_nearby_movie_theaters))
                     activity?.showNearbyTheaters()
                 }
             }

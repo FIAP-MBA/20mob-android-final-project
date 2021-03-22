@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- GA Movie Details -->
+    <string name="movie_detail_nearby_movie_theaters">movie_detail_nearby_theaters</string>
+    <string name="movie_detail_share">movie_detail_share</string>
+
+    <!-- GA Home Screen-->
+    <string name="home_more_info">home_info</string>
+    <string name="home_favorite">home_add_favorite</string>
+    <string name="home_share">home_share</string>
+
+    <!-- GA Favorite Screen -->
+    <string name="favorite_more_info">favorite_info</string>
+    <string name="favorite_favorite">favorite_remove_favorite</string>
+    <string name="favorite_share">favorite_share</string>
+</resources>

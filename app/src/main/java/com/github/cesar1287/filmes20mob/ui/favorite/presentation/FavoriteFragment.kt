@@ -13,6 +13,7 @@ import com.github.cesar1287.filmes20mob.databinding.FragmentFavoriteBinding
 import com.github.cesar1287.filmes20mob.model.MovieItem
 import com.github.cesar1287.filmes20mob.ui.favorite.adapter.FavoriteAdapter
 import com.github.cesar1287.filmes20mob.utils.Command
+import com.github.cesar1287.filmes20mob.utils.RegisterEventsAnalytics
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -84,8 +85,9 @@ class FavoriteFragment : BaseFragment() {
         val layoutManager = LinearLayoutManager(requireContext())
         favoriteBinding?.rvHomeMoviesList?.layoutManager = layoutManager
         val creditCardAdapter = FavoriteAdapter(moviesList, { movieClicked ->
-            //todo
+            RegisterEventsAnalytics.registerEvent(getString(R.string.favorite_more_info))
         }, { favoriteRemoved ->
+            RegisterEventsAnalytics.registerEvent(getString(R.string.favorite_favorite))
             favoriteRemoved?.let { favoriteViewModel.removeMovieFromFavorites(it) }
         })
         favoriteBinding?.rvHomeMoviesList?.adapter = creditCardAdapter
