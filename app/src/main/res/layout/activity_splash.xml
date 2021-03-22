@@ -17,16 +17,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tvSplashAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:textColor="@color/black"
+        android:textSize="@dimen/title_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSplashLogo"
+        tools:text="Bem vindo ao Filmes 20MOB" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lavAnimationView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ivSplashLogo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:lottie_rawRes="@raw/movie_theatre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSplashAppName"
+        app:lottie_autoPlay="true"
         app:lottie_loop="false"
-        app:lottie_autoPlay="true" />
+        app:lottie_rawRes="@raw/movie_theatre" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
