@@ -25,5 +25,6 @@ class Constants {
 
     object Firebase {
         const val FIRESTORE_COLLECTION_MOVIES = "movies"
+        const val CHANNEL_ID = "Novidades"
     }
 }
