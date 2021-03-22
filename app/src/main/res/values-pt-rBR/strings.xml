@@ -23,6 +23,8 @@
     <string name="movie_removed_from_favorites_successfully">Filme removido com sucesso dos favoritos</string>
     <string name="synopsis">Sinopse</string>
     <string name="nearby_theaters">Cinema próximos</string>
+    <string name="default_notification_channel_id">Novidades</string>
+    <string name="channel_description">Todas as novidades do mundo do cinema</string>
     <string name="error_default">Erro! Algo inesperado ocorreu, tente novamente!</string>
     <string name="error_debug">"Erro: %1$s, stack:\n %2$s"</string>
     <string name="error_favorite_default">Falha ao carregar os favoritos, tente novamente</string>
