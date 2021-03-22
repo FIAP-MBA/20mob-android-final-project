@@ -3,7 +3,6 @@ package com.github.cesar1287.filmes20mob.api
 import com.github.cesar1287.filmes20mob.BuildConfig
 import com.github.cesar1287.filmes20mob.utils.Constants.Api.API_TOKEN
 import com.github.cesar1287.filmes20mob.utils.Constants.Api.API_TOKEN_KEY
-import com.github.cesar1287.filmes20mob.utils.Constants.Api.BASE_URL
 import com.github.cesar1287.filmes20mob.utils.Constants.Api.QUERY_PARAM_LANGUAGE_LABEL
 import com.github.cesar1287.filmes20mob.utils.Constants.Api.QUERY_PARAM_LANGUAGE_VALUE
 import com.github.cesar1287.filmes20mob.utils.Constants.Api.QUERY_PARAM_REGION_LABEL
@@ -19,7 +18,7 @@ object ApiService {
 
     fun getTMDBApiClient() : Retrofit {
         return Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BuildConfig.BASE_URL)
                 .client(getInterceptorClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
