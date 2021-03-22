@@ -44,7 +44,7 @@ class ProfileViewModel(
         } ?: profileUseCase.updateUserInfo(name, onComplete = ::handlerFirebaseCalls)
     }
 
-    private fun handlerFirebaseCalls(isSuccessful: Boolean, message: String?) {
+    private fun handlerFirebaseCalls(isSuccessful: Boolean, message: Int) {
         command.value = Command.Loading(false)
         _isProfileUpdated.postValue(isSuccessful)
         if (!isSuccessful) {

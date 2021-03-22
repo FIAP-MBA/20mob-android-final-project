@@ -23,8 +23,8 @@ object DataModule {
     }
 
     val repositoryModules = module {
-        single<HomeRepository> { HomeRepositoryImpl(androidContext()) }
-        single<FavoriteRepository> { FavoriteRepositoryImpl(androidContext()) }
-        single { ProfileRepository(androidContext()) }
+        single<HomeRepository> { HomeRepositoryImpl() }
+        single<FavoriteRepository> { FavoriteRepositoryImpl() }
+        single { ProfileRepository() }
     }
 }

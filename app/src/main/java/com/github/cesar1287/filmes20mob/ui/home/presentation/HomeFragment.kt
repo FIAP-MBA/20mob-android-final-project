@@ -86,7 +86,7 @@ class HomeFragment : BaseFragment() {
                 }
                 is Command.Error -> {
                     homeBinding?.rvHomeMoviesList?.let { view ->
-                        Snackbar.make(view, it.error ?: "", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(view, getString(it.error), Snackbar.LENGTH_LONG).show()
                     }
                 }
             }

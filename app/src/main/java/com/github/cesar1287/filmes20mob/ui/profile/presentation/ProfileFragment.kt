@@ -81,7 +81,7 @@ class ProfileFragment : BaseFragment() {
                 }
                 is Command.Error -> {
                     binding?.profileScrollView?.let { view ->
-                        Snackbar.make(view, it.error ?: "", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(view, getString(it.error), Snackbar.LENGTH_LONG).show()
                     }
                 }
             }

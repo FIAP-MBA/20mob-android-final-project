@@ -1,6 +1,5 @@
 package com.github.cesar1287.filmes20mob.ui.home.data
 
-import android.content.Context
 import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.api.ApiService
 import com.github.cesar1287.filmes20mob.base.BaseRepository
@@ -16,9 +15,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 
-class HomeRepositoryImpl(
-    private var context: Context
-) : HomeRepository, BaseRepository(context) {
+class HomeRepositoryImpl : HomeRepository, BaseRepository() {
 
     override suspend fun getNowPlayingMovies(page: Int): ResponseApi {
         return safeApiCall {
@@ -62,7 +59,7 @@ class HomeRepositoryImpl(
 
             ResponseApi.Success(true)
         } catch (exception: Exception) {
-            ResponseApi.Error(context.getString(R.string.error_home_add_favorite))
+            ResponseApi.Error(R.string.error_home_add_favorite)
         }
     }
 }

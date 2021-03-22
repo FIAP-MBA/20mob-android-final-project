@@ -1,12 +1,11 @@
 package com.github.cesar1287.filmes20mob.base
 
-import android.content.Context
 import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.utils.ErrorUtils
 import com.github.cesar1287.filmes20mob.utils.ResponseApi
 import retrofit2.Response
 
-open class BaseRepository(private val context: Context) {
+open class BaseRepository {
 
     suspend fun <T : Any> safeApiCall(call: suspend () -> Response<T>) = safeApiResult(call)
 
@@ -22,11 +21,11 @@ open class BaseRepository(private val context: Context) {
                 error?.message?.let {  message ->
                     ResponseApi.Error(message)
                 } ?: run {
-                    ResponseApi.Error(context.getString(R.string.error_default))
+                    ResponseApi.Error(R.string.error_default)
                 }
             }
         } catch (error : Exception) {
-            return ResponseApi.Error(context.getString(R.string.error_debug, error.localizedMessage, error.cause))
+            return ResponseApi.Error(R.string.error_default)
         }
     }
 }
