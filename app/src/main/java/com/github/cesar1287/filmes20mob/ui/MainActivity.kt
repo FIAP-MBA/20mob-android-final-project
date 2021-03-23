@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.IdpResponse
 import com.github.cesar1287.filmes20mob.R
 import com.github.cesar1287.filmes20mob.base.BaseActivity
 import com.github.cesar1287.filmes20mob.databinding.ActivityMainBinding
@@ -32,26 +31,17 @@ class MainActivity : BaseActivity() {
     }
 
     private fun checkIfUserIsLoggedIn() {
-        Firebase.auth.currentUser?.let {
-
-        } ?: signIn(this)
+        if (Firebase.auth.currentUser == null) {
+            signIn(this)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
-            val response = IdpResponse.fromResultIntent(data)
-
-            if (resultCode == Activity.RESULT_OK) {
-                // Successfully signed in
-                val user = Firebase.auth.currentUser
-                // ...
-            } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
+            if (resultCode != Activity.RESULT_OK) {
+                signIn(this)
             }
         }
     }
@@ -71,6 +61,7 @@ class MainActivity : BaseActivity() {
             context?.startActivityForResult(
                 AuthUI.getInstance()
                     .createSignInIntentBuilder()
+                    .setLogo(R.drawable.app_logo_512)
                     .setAvailableProviders(providers)
                     .build(),
                 RC_SIGN_IN
