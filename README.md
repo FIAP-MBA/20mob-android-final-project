@@ -18,3 +18,5 @@ Trabalho final da disciplina de Android - MBA FIAP Mobile Development
 * ViewModel
 * Navigation
 * Firebase
+* Lottie
+* Koin
