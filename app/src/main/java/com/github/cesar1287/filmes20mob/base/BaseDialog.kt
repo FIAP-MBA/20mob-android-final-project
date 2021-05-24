@@ -5,16 +5,12 @@ import android.app.Dialog
 import android.util.Log
 import android.view.Window
 
-abstract class BaseDialog : Dialog {
-    var activity: Activity
+abstract class BaseDialog(
+    var activity: Activity,
+    themeResId: Int
+) : Dialog(activity, themeResId) {
 
-    constructor(activity: Activity) : super(activity) {
-        this.activity = activity
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-    }
-
-    constructor(activity: Activity, themeResId: Int) : super(activity, themeResId) {
-        this.activity = activity
+    init {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
     }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Filmes 20MOB</string>
+    <string name="app_name">Movies 20MOB</string>
     <string name="name_label">Name</string>
     <string name="email_label">Email</string>
     <string name="about_us">About Filmes 20MOB</string>
@@ -17,7 +17,7 @@
     <string name="menu_lauches">Releases</string>
     <string name="menu_favorite">Bookmarks</string>
     <string name="menu_profile">Profile</string>
-    <string name="no_favorite_label">You don\'t have any favorites yet :(\n\nAdd to the Launches screen</string>
+    <string name="no_favorite_label">You don\'t have any favorites yet :(\n\nAdd at Releases screen</string>
     <string name="movie_favorite_successfully">Successfully favored movie</string>
     <string name="movie_removed_from_favorites_successfully">Movie successfully removed from favorites</string>
     <string name="synopsis">Synopsis</string>
@@ -29,4 +29,5 @@
     <string name="error_favorite_default">Failed to load favorites, please try again</string>
     <string name="error_favorite_remove">Failed to remove movie from favorites</string>
     <string name="error_home_add_favorite">Failed to add the movie, please try again</string>
+    <string name="welcome_to_app">Welcome to Movies 20MOB</string>
 </resources>
