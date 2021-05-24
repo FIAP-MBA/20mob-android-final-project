@@ -1,5 +1,5 @@
 # 20mob-android-final-project
-Trabalho final da disciplina de Android - MBA FIAP Mobile Development
+Final Project Android Class - MBA FIAP Mobile Development
 
 ### Language
 * Kotlin
